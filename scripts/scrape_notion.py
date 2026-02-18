@@ -10,12 +10,20 @@ async def scrape_notion():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
+        print(f"Opening {NOTION_URL}...")
         await page.goto(NOTION_URL)
         
         # Wait for content to load
-        await page.wait_for_selector('.notion-page-content', timeout=60000)
-        
+        print("Waiting for .notion-page-content...")
+        try:
+            await page.wait_for_selector('.notion-page-content', timeout=60000)
+            # Wait additional time for lazy loaded content in scroll
+            await page.wait_for_load_state('networkidle', timeout=60000)
+        except Exception as e:
+            print(f"Error waiting for selector or networkidle: {e}")
+            
         # Scroll down to ensure all lazy-loaded content is visible
+        print("Scrolling page...")
         for _ in range(10):
             await page.mouse.wheel(0, 500)
             await page.wait_for_timeout(500)
@@ -168,7 +176,8 @@ def update_index_html(research_html, lecture_html, conference_html, korean_bio, 
 
     soup = BeautifulSoup(content, 'html.parser')
     
-    if research_html:
+    if research_html and research_html.strip():
+        print(f"Updating Research section with {len(research_html)} chars...")
         target = soup.find(id="research-list")
         if target:
             target.clear()
@@ -180,8 +189,11 @@ def update_index_html(research_html, lecture_html, conference_html, korean_bio, 
             else:
                 for element in new_soup.contents:
                     target.append(element)
+    else:
+        print("Skipping Research update (empty content)")
 
-    if lecture_html:
+    if lecture_html and lecture_html.strip():
+        print(f"Updating Lectures section with {len(lecture_html)} chars...")
         target = soup.find(id="lecture-list")
         if target:
             target.clear()
@@ -192,8 +204,11 @@ def update_index_html(research_html, lecture_html, conference_html, korean_bio, 
             else:
                 for element in new_soup.contents:
                     target.append(element)
+    else:
+        print("Skipping Lectures update (empty content)")
             
-    if conference_html:
+    if conference_html and conference_html.strip():
+        print(f"Updating Conferences section with {len(conference_html)} chars...")
         target = soup.find(id="conference-list")
         if target:
             target.clear()
@@ -204,8 +219,11 @@ def update_index_html(research_html, lecture_html, conference_html, korean_bio, 
             else:
                 for element in new_soup.contents:
                     target.append(element)
+    else:
+        print("Skipping Conferences update (empty content)")
                     
-    if korean_bio:
+    if korean_bio and korean_bio.strip():
+        print(f"Updating Korean Bio section with {len(korean_bio)} chars...")
         target = soup.find(id="bio-korean")
         if target:
             target.clear()
@@ -216,8 +234,11 @@ def update_index_html(research_html, lecture_html, conference_html, korean_bio, 
             else:
                 for element in new_soup.contents:
                     target.append(element)
+    else:
+        print("Skipping Korean Bio update (empty content)")
 
-    if english_bio:
+    if english_bio and english_bio.strip():
+        print(f"Updating English Bio section with {len(english_bio)} chars...")
         target = soup.find(id="bio-english")
         if target:
             target.clear()
@@ -228,6 +249,8 @@ def update_index_html(research_html, lecture_html, conference_html, korean_bio, 
             else:
                 for element in new_soup.contents:
                     target.append(element)
+    else:
+        print("Skipping English Bio update (empty content)")
             
     with open(INDEX_FILE, 'w', encoding='utf-8') as f:
         f.write(str(soup))
