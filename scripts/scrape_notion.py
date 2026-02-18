@@ -27,7 +27,6 @@ async def scrape_notion():
 def parse_research(soup):
     html_output = ""
     # Find "Research & Publications" header
-    # Notion headers are usually in specific blocks. We look for text.
     headers = soup.find_all(string=re.compile("연구 성과|Research & Publications"))
     if not headers:
         return ""
@@ -36,10 +35,30 @@ def parse_research(soup):
     
     # Iterate siblings until next major header
     current = header.next_sibling
+    current_category = "category-paper" # Default category
+    
     while current:
         text = current.get_text()
-        if "Special Lectures" in text or "초청 강연" in text or "Conferences" in text or "학술 대회" in text:
+        
+        # Stop at next major headers
+        if any(x in text for x in ["Special Lectures", "초청 강연", "Conferences", "학술 대회", "수상 내역", "Awards"]) and "연구 성과" not in text and "Research" not in text:
             break
+            
+        # Check if it's a sub-header (Notion h4 block generally)
+        # We can try to detect if it's a header by checking class or tag if possible, 
+        # but safely we can check for known sub-header titles.
+        if "저서" in text or "Books" in text:
+            current_category = "category-book"
+            current = current.next_sibling
+            continue
+        elif "역서" in text or "Translations" in text:
+            current_category = "category-trans"
+            current = current.next_sibling
+            continue
+        elif "논문" in text or "Papers" in text:
+            current_category = "category-paper"
+            current = current.next_sibling
+            continue
             
         # Check if it's a content block
         if text.strip():
@@ -49,13 +68,13 @@ def parse_research(soup):
             year_match = re.search(r'\b(20\d{2})\b', text)
             year = year_match.group(1) if year_match else "N/A"
             
-            # Simple category detection
-            category = "category-paper"
-            if "저서" in text or "Co-authored" in text:
-                category = "category-book"
-            elif "역서" in text or "Translation" in text:
-                category = "category-trans"
-                
+            # Formatting logic
+            # Notion books often use <Title> format. Papers use "Title".
+            title_text = text
+            match = re.match(r'[<"](.*?)[>"]', text)
+            if match:
+                title_text = match.group(1)
+            
             # Extract Link
             link = current.find('a')
             link_html = ""
@@ -64,10 +83,10 @@ def parse_research(soup):
                 link_html = f'<a href="{href}" class="pub-link">DOI/Link</a>'
             
             item_html = f"""
-                    <div class="pub-item {category}">
+                    <div class="pub-item {current_category}">
                         <span class="pub-year">{year}</span>
                         <div class="pub-details">
-                            <h4 class="pub-title">{text[:100]}...</h4>
+                            <h4 class="pub-title">{title_text[:100]}...</h4>
                             <p class="pub-source">{text}</p>
                             {link_html}
                         </div>
