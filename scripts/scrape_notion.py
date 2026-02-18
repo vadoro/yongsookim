@@ -109,7 +109,41 @@ def parse_lectures(soup, header_keyword):
         
     return html_output
 
-def update_index_html(research_html, lecture_html, conference_html):
+def parse_profile(soup):
+    korean_html = ""
+    english_html = ""
+    
+    headers = soup.find_all(string=re.compile("프로필"))
+    if not headers:
+        return "", ""
+        
+    header = headers[0].find_parent(class_=lambda x: x and 'block' in x)
+    current = header.next_sibling
+    
+    is_first_korean = True
+    
+    while current:
+        text = current.get_text()
+        # Stop at next major headers (Education, Career, Research, etc.)
+        if any(x in text for x in ["Education", "학력", "Academic Career", "경력", "Research", "연구 성과"]):
+            break
+            
+        if text.strip():
+            # Check for Korean characters to determine section
+            if re.search(r'[가-힣]', text):
+                if is_first_korean:
+                    korean_html += f'<p class="lead-text">{text}</p>'
+                    is_first_korean = False
+                else:
+                    korean_html += f'<p>{text}</p>'
+            else:
+                english_html += f'<p class="english-bio">{text}</p>'
+            
+        current = current.next_sibling
+        
+    return korean_html, english_html
+
+def update_index_html(research_html, lecture_html, conference_html, korean_bio, english_bio):
     with open(INDEX_FILE, 'r', encoding='utf-8') as f:
         content = f.read()
 
@@ -151,6 +185,30 @@ def update_index_html(research_html, lecture_html, conference_html):
             else:
                 for element in new_soup.contents:
                     target.append(element)
+                    
+    if korean_bio:
+        target = soup.find(id="bio-korean")
+        if target:
+            target.clear()
+            new_soup = BeautifulSoup(korean_bio, 'html.parser')
+            if new_soup.body:
+                for element in new_soup.body.contents:
+                    target.append(element)
+            else:
+                for element in new_soup.contents:
+                    target.append(element)
+
+    if english_bio:
+        target = soup.find(id="bio-english")
+        if target:
+            target.clear()
+            new_soup = BeautifulSoup(english_bio, 'html.parser')
+            if new_soup.body:
+                for element in new_soup.body.contents:
+                    target.append(element)
+            else:
+                for element in new_soup.contents:
+                    target.append(element)
             
     with open(INDEX_FILE, 'w', encoding='utf-8') as f:
         f.write(str(soup))
@@ -159,6 +217,9 @@ async def main():
     print("Fetching Notion content...")
     html_content = await scrape_notion()
     soup = BeautifulSoup(html_content, 'html.parser')
+    
+    print("Parsing Profile...")
+    korean_bio, english_bio = parse_profile(soup)
     
     print("Parsing Research...")
     research_html = parse_research(soup)
@@ -170,7 +231,7 @@ async def main():
     conference_html = parse_lectures(soup, "학술 대회|Conferences")
     
     print("Updating index.html...")
-    update_index_html(research_html, lecture_html, conference_html)
+    update_index_html(research_html, lecture_html, conference_html, korean_bio, english_bio)
     print("Done!")
 
 if __name__ == "__main__":
