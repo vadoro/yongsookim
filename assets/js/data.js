@@ -14,9 +14,6 @@ window.CV = {
   person: {
     nameKo: "김용수",
     nameEn: "Yongsoo Kim",
-    /* 사진을 쓰려면 파일을 assets/img/ 에 넣고 경로를 적으세요. 예: "assets/img/profile.jpg"
-       비워 두면 표지에 보로메오 매듭 그림이 들어갑니다. */
-    photo: "",
     email: "vadoropupille@gmail.com",
     officeKo: "인문1관 (대학본부관) 2613",
     officeEn: "Humanities Bldg. 1 (Main Administration Bldg.), Room 2613",

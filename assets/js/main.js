@@ -294,12 +294,6 @@
   }
   function initOrnaments() {
     $$("[data-knot]").forEach(function (el) { el.innerHTML = knotSVG(); });
-    if (CV.person.photo) {
-      var plate = $("#plate");
-      plate.innerHTML = '<img src="' + esc(CV.person.photo) + '" alt="김용수 Yongsoo Kim" width="800" height="1000">';
-      plate.classList.add("has-photo");
-      $("#plate-caption").innerHTML = "<b>FIG. 1</b>김용수 <em>Yongsoo Kim</em>";
-    }
   }
 
   /* copy email */
@@ -340,13 +334,24 @@
   }
   function renderChrono() {
     var el = $("#chrono");
-    var MIN = 1986, MAX = Math.max(NOW_Y + 1, 2027) + 1;
-    function pct(y) { return ((y - MIN) / (MAX - MIN) * 100).toFixed(3) + "%"; }
-    var ticks = [];
-    for (var y = 1990; y < MAX; y += 5) ticks.push(y);
+    /* 2000년 이전은 축소: 트랙의 SPLIT%만 1986–2000에 쓰고 나머지를 2000–현재에 씁니다 */
+    var MIN = 1986, BREAK = 2000, SPLIT = 14;
+    var MAX = Math.max(NOW_DEC + 0.7, 2027.5);
+    function pos(y) {
+      return y <= BREAK ? (y - MIN) / (BREAK - MIN) * SPLIT
+                        : SPLIT + (y - BREAK) / (MAX - BREAK) * (100 - SPLIT);
+    }
+    function pct(y) { return pos(y).toFixed(3) + "%"; }
+    function span(s, e) { return (pos(e) - pos(s)).toFixed(3) + "%"; }
+    var ticks = [1990, BREAK];
+    for (var y = BREAK + 5; y < MAX; y += 5) ticks.push(y);
+    var minor = [];
+    for (var my = BREAK + 1; my < MAX; my++) if (my % 5) minor.push(my);
 
     var gridHtml = '<div class="chrono-grid" aria-hidden="true">' +
-      ticks.map(function (y) { return '<span class="tick" style="left:' + pct(y) + '"></span>'; }).join("") +
+      '<span class="zone-compressed" style="width:' + SPLIT + '%"></span>' +
+      minor.map(function (y) { return '<span class="tick minor" style="left:' + pct(y) + '"></span>'; }).join("") +
+      ticks.map(function (y) { return '<span class="tick' + (y === BREAK ? " break" : "") + '" style="left:' + pct(y) + '"></span>'; }).join("") +
       '<span class="now-line" style="left:' + pct(NOW_DEC) + '"></span>' +
       '<span class="now-label" style="left:' + pct(NOW_DEC) + '">' + esc(t("now", NOW_Y + "." + pad2(NOW_M))) + "</span></div>";
 
@@ -366,7 +371,7 @@
       return '<div class="chrono-group-head"><h3>' + esc(T.ko.groups[g.key]) + " <em>" + esc(g.en) + "</em></h3></div>" +
         items.map(function (it) {
           var s = parseStart(it.start), e = parseEnd(it.end), current = !it.end;
-          var w = ((e - s) / (MAX - MIN) * 100).toFixed(3) + "%";
+          var w = span(s, e);
           return '<div class="chrono-row" tabindex="0" data-s="' + s + '" data-e="' + e + '" aria-label="' + esc(it.ko + ", " + rangeText(it)) + '">' +
             '<div class="chrono-label"><strong>' + esc(it.ko) + (it.degree ? '<span class="deg">' + esc(it.degree) + "</span>" : "") + "</strong>" +
             '<span class="when">' + esc(rangeText(it)) + "</span></div>" +
@@ -381,7 +386,7 @@
       var s = +row.getAttribute("data-s"), e = +row.getAttribute("data-e");
       marks.forEach(function (m) {
         m.style.left = pct(s);
-        m.style.width = ((e - s) / (MAX - MIN) * 100).toFixed(3) + "%";
+        m.style.width = span(s, e);
         m.classList.add("is-on");
       });
     }
