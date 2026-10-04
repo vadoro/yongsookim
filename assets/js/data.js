@@ -35,6 +35,44 @@ window.CV = {
     film:   { ko: "영화", en: "Film" }
   },
 
+  /*
+   * 표지 연결망의 키워드 사전.
+   * 논문·저서·학술 발표·강연 제목에 match 의 문자열 중 하나라도 들어 있으면 그 키워드가 나온 것으로 셉니다.
+   * 같은 제목에 함께 나온 키워드끼리 선으로 이어집니다. group 은 노드 색(주제)입니다.
+   */
+  keywords: [
+    { ko: "디지털인문학", en: "Digital Humanities", group: "dh", match: ["디지털인문학", "디지털 인문학", "Digital Humanities", "DH "] },
+    { ko: "연결망", en: "Networks", group: "dh", match: ["연결망", "Network", "네트워크"] },
+    { ko: "의미연결망", en: "Semantic networks", group: "dh", match: ["의미연결망", "의미 연결망", "Semantic Network", "공기어"] },
+    { ko: "지형도", en: "Topography", group: "dh", match: ["지형도"] },
+    { ko: "학술지", en: "Journals", group: "dh", match: ["학술지", "Journal of English"] },
+    { ko: "계량서지", en: "Bibliometrics", group: "dh", match: ["Bibliometric", "인용"] },
+    { ko: "교육", en: "Education", group: "dh", match: ["교육", "Pedagogy"] },
+    { ko: "Gephi", en: "Gephi", group: "dh", match: ["Gephi"] },
+    { ko: "AI", en: "AI", group: "dh", match: ["AI", "인공지능"] },
+    { ko: "데이터", en: "Data", group: "dh", match: ["데이터", "Data"] },
+    { ko: "융합", en: "Convergence", group: "dh", match: ["융합"] },
+    { ko: "라캉", en: "Lacan", group: "theory", match: ["라캉", "Lacan"] },
+    { ko: "정신분석", en: "Psychoanalysis", group: "theory", match: ["정신분석", "Psychoanaly"] },
+    { ko: "욕망", en: "Desire", group: "theory", match: ["욕망", "Desire"] },
+    { ko: "윤리", en: "Ethics", group: "theory", match: ["윤리", "Ethics"] },
+    { ko: "여성성", en: "The Feminine", group: "theory", match: ["여성", "Feminin"] },
+    { ko: "실재", en: "The Real", group: "theory", match: ["실재", "the Real"] },
+    { ko: "승화", en: "Sublimation", group: "theory", match: ["Sublimation"] },
+    { ko: "목소리", en: "Voice", group: "theory", match: ["목소리"] },
+    { ko: "담론", en: "Discourse", group: "theory", match: ["담론"] },
+    { ko: "비평이론", en: "Criticism & Theory", group: "theory", match: ["비평 이론", "비평과 이론", "비평과이론", "비평이론", "비평/이론"] },
+    { ko: "바그너", en: "Wagner", group: "theory", match: ["바그너"] },
+    { ko: "영화", en: "Film", group: "film", match: ["영화", "Film"] },
+    { ko: "응시", en: "The Gaze", group: "film", match: ["응시", "Gaze"] },
+    { ko: "폭력", en: "Violence", group: "film", match: ["폭력", "Violence"] },
+    { ko: "봉준호", en: "Bong Joon-ho", group: "film", match: ["Joon-Ho Bong"] },
+    { ko: "포크너", en: "Faulkner", group: "amlit", match: ["포크너", "Faulkner"] },
+    { ko: "인종", en: "Race", group: "amlit", match: ["인종", "린칭"] },
+    { ko: "서사", en: "Narrative", group: "amlit", match: ["서사", "Narrative", "Character", "이야기"] },
+    { ko: "영미문학", en: "English Studies", group: "amlit", match: ["영미문학", "영문학", "영어영문학", "English Literary", "English Studies", "English Literature"] }
+  ],
+
   education: [
     { start: "1987", end: "1993", ko: "한림대학교 영어영문학과", degree: "BA" },
     { start: "1994", end: "1996", ko: "The University of Tulsa, Dept. of English", degree: "MA" },

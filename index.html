@@ -4,26 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>김용수 Yongsoo Kim</title>
-  <meta name="description" content="김용수 — 한림대학교 영어영문학과/디지털인문예술전공 교수. 미국문학, 영화, 라캉 정신분석, 디지털인문학을 연구합니다.">
+  <meta name="description" content="김용수 — 한림대학교 영어영문학과/디지털인문예술전공 교수. 욕망, 서사, 그리고 디지털인문학. 논문·저서·강연 제목으로 그린 연구 연결망.">
   <meta name="author" content="김용수 Yongsoo Kim">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="김용수 Yongsoo Kim — Curriculum Vitæ">
-  <meta property="og:description" content="Professor of English and Digital Arts & Humanities, Hallym University. American fiction, film, Lacanian psychoanalysis, and digital humanities.">
-  <meta name="theme-color" content="#F3EDE1" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17130F" media="(prefers-color-scheme: dark)">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -4 68 68'%3E%3Crect x='-2' y='-4' width='68' height='68' rx='12' fill='%23F3EDE1'/%3E%3Cg fill='none' stroke-width='5'%3E%3Ccircle cx='42.83' cy='39.25' r='20' stroke='%23F3EDE1' stroke-width='10'/%3E%3Ccircle cx='42.83' cy='39.25' r='20' stroke='%237B1E2B'/%3E%3Ccircle cx='32' cy='20.5' r='20' stroke='%23F3EDE1' stroke-width='10'/%3E%3Ccircle cx='32' cy='20.5' r='20' stroke='%237B1E2B'/%3E%3Ccircle cx='21.17' cy='39.25' r='20' stroke='%23F3EDE1' stroke-width='10'/%3E%3Ccircle cx='21.17' cy='39.25' r='20' stroke='%237B1E2B'/%3E%3C/g%3E%3C/svg%3E">
+  <meta property="og:title" content="김용수 Yongsoo Kim">
+  <meta property="og:description" content="Professor of English and Digital Arts & Humanities, Hallym University. Desire, narrative, and the digital humanities.">
+  <meta name="theme-color" content="#0A0F1E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0F1E'/%3E%3Cg stroke='%236CE0F0' stroke-width='1.4' opacity='.7'%3E%3Cpath d='M9 22L16 9L24 19L9 22'/%3E%3C/g%3E%3Ccircle cx='16' cy='9' r='3.4' fill='%236CE0F0'/%3E%3Ccircle cx='9' cy='22' r='2.6' fill='%23F2B54A'/%3E%3Ccircle cx='24' cy='19' r='2.8' fill='%238264c8'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;600;700;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
   <script>
-    /* 저장된 테마·언어를 첫 화면부터 적용 (깜빡임 방지) */
     (function () {
       var d = document.documentElement;
       d.classList.add("js");
       try {
-        var t = localStorage.getItem("cv-theme");
-        if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
         var l = localStorage.getItem("cv-lang");
         if (l === "ko" || l === "en") d.setAttribute("lang", l);
       } catch (e) {}
@@ -31,179 +27,120 @@
   </script>
 </head>
 <body>
+<canvas id="stars" aria-hidden="true"></canvas>
 <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
 <header class="topbar" id="topbar">
   <div class="topbar-inner wrap">
-    <div class="topbar-left">
-      <span class="issue" id="issue">Curriculum Vitæ</span>
-      <a class="runhead" href="#top" aria-label="맨 위로">
-        <span class="runhead-name">김용수</span><span class="runhead-sep">/</span><span id="runhead-sec">Contents</span>
-      </a>
-    </div>
-    <div class="topbar-right">
-      <div class="seg" role="group" aria-label="언어 Language">
-        <button type="button" id="lang-ko" data-set-lang="ko" aria-pressed="true">KO</button>
-        <button type="button" id="lang-en" data-set-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
-        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>
-        <span class="tt-text" id="theme-label">Night</span>
-      </button>
+    <a class="brand" href="#top" aria-label="맨 위로">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><g stroke="currentColor" stroke-width="1.4" opacity=".6"><path d="M9 22L16 9L24 19L9 22"/></g><circle cx="16" cy="9" r="3.4" fill="var(--cyan)"/><circle cx="9" cy="22" r="2.6" fill="var(--amber)"/><circle cx="24" cy="19" r="2.8" fill="var(--t-theory)"/></svg>
+      <span class="brand-name">김용수 <em>Yongsoo Kim</em></span>
+    </a>
+    <nav class="nav" aria-label="섹션">
+      <a href="#about" data-nav="about"><span data-lang="ko">소개</span><span data-lang="en">About</span></a>
+      <a href="#timeline" data-nav="timeline"><span data-lang="ko">연보</span><span data-lang="en">Timeline</span></a>
+      <a href="#works" data-nav="works"><span data-lang="ko">연구</span><span data-lang="en">Works</span></a>
+      <a href="#talks" data-nav="talks"><span data-lang="ko">강연·발표</span><span data-lang="en">Talks</span></a>
+      <a href="#awards" data-nav="awards"><span data-lang="ko">수상</span><span data-lang="en">Awards</span></a>
+    </nav>
+    <div class="seg" role="group" aria-label="언어 Language">
+      <button type="button" id="lang-ko" data-set-lang="ko" aria-pressed="true">KO</button>
+      <button type="button" id="lang-en" data-set-lang="en" aria-pressed="false">EN</button>
     </div>
   </div>
 </header>
 
-<div class="page" id="top">
-<main>
+<main id="top">
 
-  <!-- ===================== COVER ===================== -->
-  <section class="cover wrap" aria-label="표지 Cover">
-    <div class="masthead">
-      <div class="mast-rule"></div>
-      <div class="mast-row">
-        <span class="label"><span data-lang="ko">한림대학교 · 춘천</span><span data-lang="en">Hallym University · Chuncheon</span></span>
-        <p class="mast-title">Curriculum <i>Vitæ</i></p>
-        <span class="label" id="issue-long">Vol. 2026</span>
+  <!-- ===================== HERO: the network ===================== -->
+  <section class="hero wrap" aria-label="표지">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-lang="ko">한림대학교 영어영문학과 · 디지털인문예술전공</span><span data-lang="en">Hallym University · English and Digital Arts &amp; Humanities</span></p>
+      <h1 class="name">
+        <span class="name-ko">김용수</span>
+        <span class="name-en">Yongsoo Kim</span>
+      </h1>
+      <p class="tagline"><span data-lang="ko">욕망, 서사, 그리고 디지털인문학</span><span data-lang="en">Desire, Narrative, and the Digital Humanities</span></p>
+      <ul class="roles">
+        <li><span data-lang="ko">한림대학교 영어영문학과/디지털인문예술전공 교수</span><span data-lang="en">Professor of English and Digital Arts &amp; Humanities, Hallym University</span></li>
+        <li><span data-lang="ko">한국디지털인문학협의회(KADH) 회장</span><span data-lang="en">President, Korean Association for Digital Humanities (KADH)</span></li>
+        <li><span data-lang="ko">한국비평이론학회 회장</span><span data-lang="en">President, The Criticism and Theory Society of Korea</span></li>
+      </ul>
+      <div class="contact">
+        <span class="email"><span id="email-text">vadoropupille@gmail.com</span><button type="button" class="copy-btn" id="copy-email"><span data-lang="ko">복사</span><span data-lang="en">Copy</span></button></span>
+        <a class="pill-link" href="https://www.researchgate.net/profile/Yongsoo-Kim-10" target="_blank" rel="noopener">ResearchGate ↗</a>
+        <a class="pill-link" href="https://github.com/vadoro" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-      <div class="mast-rule double"></div>
     </div>
 
-    <div class="cover-grid">
-      <div class="cover-text">
-        <p class="kicker label"><span data-lang="ko">표지 이야기 — 영어영문학 · 디지털인문예술</span><span data-lang="en">Cover story — English · Digital Arts &amp; Humanities</span></p>
-        <h1 class="cover-name">
-          <span class="ko" aria-label="김용수"><span class="ch" aria-hidden="true">김</span><span class="ch" aria-hidden="true">용</span><span class="ch" aria-hidden="true">수</span></span>
-          <span class="en">Yongsoo Kim</span>
-        </h1>
-        <p class="cover-tagline"><span data-lang="ko">욕망, 서사, 그리고 디지털인문학</span><span data-lang="en">Desire, Narrative, and the Digital Humanities</span></p>
-        <p class="cover-deck" data-lang="ko">포크너와 라캉에서 출발해 의미연결망 분석에 이르기까지. 미국 소설과 영화, 정신분석 이론, 디지털인문학을 가로지르는 연구와 교육의 기록입니다.</p>
-        <p class="cover-deck" data-lang="en">From Faulkner and Lacan to semantic network analysis: a record of research and teaching across American fiction, film, psychoanalytic theory, and the digital humanities.</p>
-        <ul class="cover-roles" id="cover-roles">
-          <li><span class="n">01</span><span><span data-lang="ko">한림대학교 영어영문학과/디지털인문예술전공 교수</span><span data-lang="en">Professor of English and Digital Arts &amp; Humanities, Hallym University</span></span></li>
-          <li><span class="n">02</span><span><span data-lang="ko">한국디지털인문학협의회(KADH) 회장</span><span data-lang="en">President, Korean Association for Digital Humanities (KADH)</span></span></li>
-          <li><span class="n">03</span><span><span data-lang="ko">한국비평이론학회 회장</span><span data-lang="en">President, The Criticism and Theory Society of Korea</span></span></li>
-        </ul>
+    <figure class="graph-figure">
+      <div class="graph-wrap" id="graph">
+        <div class="graph-tip" id="graph-tip" aria-hidden="true"></div>
       </div>
+      <figcaption class="graph-caption" id="graph-caption"></figcaption>
+    </figure>
 
-      <figure class="cover-figure" id="cover-figure">
-        <div class="plate has-photo" id="plate">
-          <img src="assets/img/profile.jpg" alt="책장 앞에 선 김용수 교수" width="800" height="1000" decoding="async">
-        </div>
-        <figcaption>
-          <b>FIG. 1</b>김용수 <em>Yongsoo Kim</em>
-        </figcaption>
-      </figure>
-    </div>
+    <aside class="inspector" id="inspector" aria-live="polite"></aside>
+  </section>
 
-    <dl class="cover-meta">
-      <div>
-        <dt class="label"><span data-lang="ko">이메일</span><span data-lang="en">Email</span></dt>
-        <dd class="email-line">
-          <a href="mailto:vadoropupille@gmail.com" id="email-text">vadoropupille@gmail.com</a>
-          <button type="button" class="copy-btn" id="copy-email"><span data-lang="ko">복사</span><span data-lang="en">Copy</span></button>
-        </dd>
-      </div>
-      <div>
-        <dt class="label"><span data-lang="ko">연구실</span><span data-lang="en">Office</span></dt>
-        <dd><span data-lang="ko">인문1관 (대학본부관) 2613</span><span data-lang="en">Humanities Bldg. 1 (Main Administration Bldg.), Room 2613</span></dd>
-      </div>
-      <div>
-        <dt class="label"><span data-lang="ko">연구 분야 — 누르면 관련 연구로</span><span data-lang="en">Fields — tap to browse</span></dt>
-        <dd class="field-chips">
-          <button type="button" class="field-chip" data-jump-theme="amlit"><span class="swatch sw-amlit"></span><span data-lang="ko">미국문학</span><span data-lang="en">American Lit.</span></button>
-          <button type="button" class="field-chip" data-jump-theme="film"><span class="swatch sw-film"></span><span data-lang="ko">영화</span><span data-lang="en">Film</span></button>
-          <button type="button" class="field-chip" data-jump-theme="theory"><span class="swatch sw-theory"></span><span data-lang="ko">정신분석</span><span data-lang="en">Psychoanalysis</span></button>
-          <button type="button" class="field-chip" data-jump-theme="dh"><span class="swatch sw-dh"></span><span data-lang="ko">디지털인문학</span><span data-lang="en">Digital Humanities</span></button>
-        </dd>
-      </div>
-      <div>
-        <dt class="label"><span data-lang="ko">링크</span><span data-lang="en">Elsewhere</span></dt>
-        <dd class="link-list">
-          <a href="https://www.researchgate.net/profile/Yongsoo-Kim-10" target="_blank" rel="noopener">ResearchGate<span class="arrow">↗</span></a>
-          <a href="https://github.com/vadoro" target="_blank" rel="noopener">GitHub<span class="arrow">↗</span></a>
-        </dd>
-      </div>
+  <!-- ===================== STATS ===================== -->
+  <section class="wrap" aria-label="한눈에 보기">
+    <dl class="stats" id="stats">
+      <div class="stat"><dt><span data-lang="ko">논문</span><span data-lang="en">Articles</span></dt><dd data-count="articles">34</dd></div>
+      <div class="stat"><dt><span data-lang="ko">저서</span><span data-lang="en">Books</span></dt><dd data-count="books">5</dd></div>
+      <div class="stat"><dt><span data-lang="ko">역서</span><span data-lang="en">Translations</span></dt><dd data-count="translations">2</dd></div>
+      <div class="stat"><dt><span data-lang="ko">초청 강연</span><span data-lang="en">Invited lectures</span></dt><dd data-count="lectures">26</dd></div>
+      <div class="stat"><dt><span data-lang="ko">학술 발표</span><span data-lang="en">Conference papers</span></dt><dd data-count="conferences">9</dd></div>
+      <div class="stat"><dt><span data-lang="ko">한림대 재직 연수</span><span data-lang="en">Years at Hallym</span></dt><dd data-count="years">22</dd></div>
     </dl>
   </section>
 
-  <!-- ===================== CONTENTS ===================== -->
-  <section class="section wrap" id="contents" data-run-ko="목차" data-run-en="Contents">
+  <!-- ===================== ABOUT ===================== -->
+  <section class="section wrap" id="about">
     <header class="sec-head">
-      <span class="sec-num" aria-hidden="true">§</span>
-      <h2 class="sec-title">목차<span class="sec-en">Contents</span></h2>
-      <span class="sec-folio">p. 02</span>
+      <p class="kicker"><i class="kdot"></i>About</p>
+      <h2>소개 <em>Profile</em></h2>
     </header>
-    <div class="contents-grid">
-      <ol class="toc">
-        <li><a href="#profile"><span class="toc-num">I</span><span class="toc-title"><strong>프로필 <em>Profile</em></strong><small data-lang="ko">한림대에서 버팔로까지, 그리고 다시 한림대로</small><small data-lang="en">From Hallym to Buffalo, and back to Hallym</small></span><span class="toc-leader"></span><span class="toc-folio">03</span></a></li>
-        <li><a href="#chronology"><span class="toc-num">II</span><span class="toc-title"><strong>연보 <em>Chronology</em></strong><small data-lang="ko">학력·경력·학회 활동, 1987년부터 현재까지</small><small data-lang="en">Education, appointments, and service, 1987 to the present</small></span><span class="toc-leader"></span><span class="toc-folio">04</span></a></li>
-        <li><a href="#awards"><span class="toc-num">III</span><span class="toc-title"><strong>수상 <em>Awards</em></strong><small data-lang="ko">우수 수업상, 우수 논문상, 우수 강의상</small><small data-lang="en">Teaching and research awards</small></span><span class="toc-leader"></span><span class="toc-folio">05</span></a></li>
-        <li><a href="#publications"><span class="toc-num">IV</span><span class="toc-title"><strong>연구 성과 <em>Publications</em></strong><small data-lang="ko">논문 <span data-stat="articles">34</span>편 · 저서 <span data-stat="books">5</span>권 · 역서 <span data-stat="translations">2</span>권</small><small data-lang="en"><span data-stat="articles">34</span> articles · <span data-stat="books">5</span> books · <span data-stat="translations">2</span> translations</small></span><span class="toc-leader"></span><span class="toc-folio">06</span></a></li>
-        <li><a href="#lectures"><span class="toc-num">V</span><span class="toc-title"><strong>초청 강연 <em>Invited Lectures</em></strong><small data-lang="ko">기조 강연과 특강 <span data-stat="lectures">26</span>건</small><small data-lang="en"><span data-stat="lectures">26</span> keynotes, talks, and lectures</small></span><span class="toc-leader"></span><span class="toc-folio">07</span></a></li>
-        <li><a href="#conferences"><span class="toc-num">VI</span><span class="toc-title"><strong>학술 발표 <em>Conferences</em></strong><small data-lang="ko">그라츠 DH2023에서 리스본 DH2025까지</small><small data-lang="en">From DH2023 in Graz to DH2025 in Lisbon</small></span><span class="toc-leader"></span><span class="toc-folio">08</span></a></li>
-      </ol>
-
-      <aside class="glance" aria-labelledby="glance-title">
-        <div class="glance-head">
-          <h3 id="glance-title"><span data-lang="ko">한눈에 보기</span><span data-lang="en">At a glance</span></h3>
-          <span class="label" id="glance-asof">2026</span>
+    <div class="about-grid">
+      <figure class="ego">
+        <div class="ego-ring">
+          <img src="assets/img/profile.jpg" alt="책장 앞에 선 김용수 교수" width="800" height="1000" decoding="async">
+          <i class="sat s1"></i><i class="sat s2"></i><i class="sat s3"></i>
         </div>
-        <dl class="stats" id="stats">
-          <div class="stat"><dt>논문<small>Articles</small></dt><dd data-count="articles">34</dd></div>
-          <div class="stat"><dt>저서<small>Books</small></dt><dd data-count="books">5</dd></div>
-          <div class="stat"><dt>역서<small>Translations</small></dt><dd data-count="translations">2</dd></div>
-          <div class="stat"><dt>초청 강연<small>Invited lectures</small></dt><dd data-count="lectures">26</dd></div>
-          <div class="stat"><dt>학술 발표<small>Conference papers</small></dt><dd data-count="conferences">9</dd></div>
-          <div class="stat"><dt>한림대 재직 연수<small>Years at Hallym</small></dt><dd data-count="years">22</dd></div>
-        </dl>
-        <p class="glance-note"><span data-lang="ko">숫자는 아래 목록에서 바로 계산됩니다.</span><span data-lang="en">Counts are computed from the lists below.</span></p>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ===================== I. PROFILE ===================== -->
-  <section class="section wrap" id="profile" data-run-ko="I. 프로필" data-run-en="I. Profile">
-    <header class="sec-head">
-      <span class="sec-num">I</span>
-      <h2 class="sec-title">프로필<span class="sec-en">Profile</span></h2>
-      <span class="sec-folio">p. 03</span>
-    </header>
-    <div class="profile-grid">
-      <aside class="margin-notes">
-        <div class="sidenote">
-          <span class="label"><span data-lang="ko">박사학위 논문</span><span data-lang="en">Dissertation</span></span>
-          <blockquote>Faulkner with Lacan: Desire, Ethics, and the Feminine</blockquote>
-          <cite>SUNY Buffalo · Ph.D. · 2001</cite>
-        </div>
-        <div class="sidenote">
-          <span class="label"><span data-lang="ko">학력</span><span data-lang="en">Education</span></span>
-          <ul class="edu-mini">
-            <li><span class="yr">1996–2001</span><span>SUNY at Buffalo, PhD</span></li>
-            <li><span class="yr">1994–1996</span><span>Univ. of Tulsa, MA</span></li>
-            <li><span class="yr">1987–1993</span><span><span data-lang="ko">한림대학교, BA</span><span data-lang="en">Hallym University, BA</span></span></li>
-          </ul>
-        </div>
-      </aside>
-      <div>
-        <div class="prose dropcap columns" lang="ko" data-lang="ko">
+        <figcaption><span class="mono">ego</span> 김용수 <em>Yongsoo Kim</em></figcaption>
+      </figure>
+      <div class="bio">
+        <div class="prose" lang="ko" data-lang="ko">
           <p>한림대학교와 미국 털사대학교(석사)를 졸업하고 뉴욕주립대학(버팔로)에서 “Faulkner with Lacan: Desire, Ethics, and the Feminine”으로 박사학위를 받았다. 현재 한림대학교 영어영문학과와 디지털인문예술전공 교수로 재직하고 있으며, 주로 미국 소설과 영화, 라캉의 정신분석 이론, 디지털인문학을 연구하고 있다. 저서로는 “Digital Humanities and Scholarly Research Trends in the Asia-Pacific”(공저, IGI Global, 2019), “자크 라캉”(살림, 2008), 역서로는 “정치, 사회적 개념의 역사”(공역 2010), “역사를 읽는 방법”(공역 2012), 최근 논문으로는 “한국 영어영문학 연구 70년의 지형도: 의미연결망 분석과 학술지 『영어영문학』(1955-2024)” (2025) 등이 있다.</p>
         </div>
-        <div class="prose dropcap columns" lang="en" data-lang="en">
+        <div class="prose" lang="en" data-lang="en">
           <p>Yongsoo Kim is professor of English and Digital Arts &amp; Humanities at Hallym University in South Korea. He is president of the Korean Association for Digital Humanities. His research primarily focuses on American novels and films, Lacanian psychoanalytic theory, and digital humanities. His publications include <em>Digital Humanities and Scholarly Research Trends in the Asia-Pacific</em> (co-authored, IGI Global, 2019), <em>Jacques Lacan</em> (Sallim, 2008), and translations such as Melvin Richter’s <em>The History of Political and Social Concepts: A Critical Introduction</em> (co-translation, 2010) and Quentin Skinner’s <em>Visions of Politics</em> (co-translation, 2012). His recent papers include “Topology of Korean English Studies: A Semantic Network Analysis of <em>The Journal of English Language and Literature</em> (1955-2024)” (2025).</p>
+        </div>
+        <div class="facts">
+          <div class="fact">
+            <p class="label"><span data-lang="ko">박사학위 논문</span><span data-lang="en">Dissertation</span></p>
+            <p class="fact-quote">Faulkner with Lacan: Desire, Ethics, and the Feminine</p>
+            <p class="fact-sub">SUNY Buffalo · Ph.D. · 2001</p>
+          </div>
+          <div class="fact">
+            <p class="label"><span data-lang="ko">연구 분야 — 누르면 관련 연구로</span><span data-lang="en">Fields — select to browse</span></p>
+            <div class="field-chips" id="field-chips"></div>
+          </div>
+          <div class="fact">
+            <p class="label"><span data-lang="ko">연구실</span><span data-lang="en">Office</span></p>
+            <p><span data-lang="ko">인문1관 (대학본부관) 2613</span><span data-lang="en">Humanities Bldg. 1 (Main Administration Bldg.), Room 2613</span></p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== II. CHRONOLOGY ===================== -->
-  <section class="section wrap" id="chronology" data-run-ko="II. 연보" data-run-en="II. Chronology">
+  <!-- ===================== TIMELINE ===================== -->
+  <section class="section wrap" id="timeline">
     <header class="sec-head">
-      <span class="sec-num">II</span>
-      <h2 class="sec-title">연보<span class="sec-en">Chronology</span></h2>
-      <span class="sec-folio">p. 04</span>
+      <p class="kicker"><i class="kdot"></i>Timeline</p>
+      <h2>연보 <em>Chronology</em></h2>
     </header>
-    <p class="sec-deck"><span data-lang="ko">학력, 경력, 학회 활동을 하나의 시간 축 위에 놓았습니다. 항목에 마우스를 올리면 해당 기간이 축에 표시됩니다.</span><span data-lang="en">Education, appointments, and professional service on a single time axis. Hover over an entry to mark its span on the axis.</span></p>
     <div class="chrono-legend">
       <span><i class="key-bar key-now"></i><span data-lang="ko">현재 맡고 있는 직책</span><span data-lang="en">Current</span></span>
       <span><i class="key-bar key-past"></i><span data-lang="ko">지난 이력</span><span data-lang="en">Past</span></span>
@@ -212,36 +149,21 @@
     <div class="chrono" id="chrono"></div>
   </section>
 
-  <!-- ===================== III. AWARDS ===================== -->
-  <section class="section wrap" id="awards" data-run-ko="III. 수상" data-run-en="III. Awards">
+  <!-- ===================== WORKS ===================== -->
+  <section class="section wrap" id="works">
     <header class="sec-head">
-      <span class="sec-num">III</span>
-      <h2 class="sec-title">수상 내역<span class="sec-en">Awards</span></h2>
-      <span class="sec-folio">p. 05</span>
+      <p class="kicker"><i class="kdot"></i>Works</p>
+      <h2>연구 성과 <em>Publications</em></h2>
     </header>
-    <ul class="awards" id="awards-list"></ul>
-  </section>
-
-  <!-- ===================== IV. PUBLICATIONS ===================== -->
-  <section class="section wrap" id="publications" data-run-ko="IV. 연구 성과" data-run-en="IV. Publications">
-    <header class="sec-head">
-      <span class="sec-num">IV</span>
-      <h2 class="sec-title">연구 성과<span class="sec-en">Publications</span></h2>
-      <span class="sec-folio">p. 06</span>
-    </header>
-    <p class="sec-deck"><span data-lang="ko">라캉과 포크너, 영화에서 출발한 연구가 2017년을 기점으로 디지털인문학으로 옮겨 갑니다. 그림의 블록 하나가 논문·저서 한 편입니다. 막대를 누르면 그 해의 성과만, 범례를 누르면 해당 주제만 볼 수 있습니다.</span><span data-lang="en">Work that began with Lacan, Faulkner, and film turns toward the digital humanities from 2017. Each block in the figure is one article or book. Select a column to see that year, or a legend entry to see one theme.</span></p>
+    <p class="sec-deck"><span data-lang="ko">라캉과 포크너, 영화에서 출발한 연구가 2017년을 기점으로 디지털인문학으로 옮겨 갑니다. 그림의 블록 하나가 논문·저서 한 편입니다. 막대를 누르면 그 해의 성과만, 주제를 누르면 그 주제만 볼 수 있습니다.</span><span data-lang="en">Work that began with Lacan, Faulkner, and film turns toward the digital humanities from 2017. Each block is one article or book. Select a column for that year, or a theme to see only that theme.</span></p>
 
     <div class="filters" role="group" aria-label="연구 성과 필터">
-      <div class="filter-group" id="theme-filters">
-        <span class="label"><span data-lang="ko">주제</span><span data-lang="en">Theme</span></span>
-      </div>
-      <div class="filter-group" id="type-filters">
-        <span class="label"><span data-lang="ko">유형</span><span data-lang="en">Type</span></span>
-      </div>
+      <div class="filter-group" id="theme-filters"><span class="label"><span data-lang="ko">주제</span><span data-lang="en">Theme</span></span></div>
+      <div class="filter-group" id="type-filters"><span class="label"><span data-lang="ko">유형</span><span data-lang="en">Type</span></span></div>
       <label class="search" for="pub-search">
         <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         <span class="sr-only">검색 Search</span>
-        <input type="search" id="pub-search" autocomplete="off" placeholder="제목·학술지 검색  e.g. Faulkner, 연결망">
+        <input type="search" id="pub-search" autocomplete="off" placeholder="제목·학술지 검색">
       </label>
     </div>
 
@@ -249,7 +171,7 @@
       <div class="chart-wrap" id="pub-chart">
         <div class="tooltip" id="chart-tip" role="status" aria-live="polite"></div>
       </div>
-      <figcaption><b>FIG. 2</b><span data-lang="ko">연도별 논문·저서 수. 색은 각 성과의 첫 번째 주제입니다 (역서 제외).</span><span data-lang="en">Articles and books per year, colored by each item’s primary theme (translations excluded).</span></figcaption>
+      <figcaption><span data-lang="ko">연도별 논문·저서 수. 색은 각 성과의 첫 번째 주제입니다(역서 제외).</span><span data-lang="en">Articles and books per year, colored by each item’s primary theme (translations excluded).</span></figcaption>
       <div class="sr-only"><table id="chart-table"></table></div>
     </figure>
 
@@ -264,50 +186,48 @@
     <noscript><p class="empty">연구 성과 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
   </section>
 
-  <!-- ===================== V. LECTURES ===================== -->
-  <section class="section wrap" id="lectures" data-run-ko="V. 초청 강연" data-run-en="V. Invited Lectures">
+  <!-- ===================== TALKS ===================== -->
+  <section class="section wrap" id="talks">
     <header class="sec-head">
-      <span class="sec-num">V</span>
-      <h2 class="sec-title">초청 강연<span class="sec-en">Invited Lectures</span></h2>
-      <span class="sec-folio">p. 07</span>
+      <p class="kicker"><i class="kdot"></i>Talks</p>
+      <h2>강연·발표 <em>Lectures &amp; Conferences</em></h2>
     </header>
-    <div class="filters" role="group" aria-label="강연 유형">
-      <div class="filter-group" id="lec-filters">
-        <span class="label"><span data-lang="ko">유형</span><span data-lang="en">Type</span></span>
-      </div>
+    <div class="tabs" role="tablist" aria-label="강연과 학술 발표">
+      <button type="button" role="tab" id="tab-lec" aria-controls="panel-lec" aria-selected="true"><span data-lang="ko">초청 강연</span><span data-lang="en">Invited lectures</span> <span class="count" data-count="lectures">26</span></button>
+      <button type="button" role="tab" id="tab-conf" aria-controls="panel-conf" aria-selected="false" tabindex="-1"><span data-lang="ko">학술 발표</span><span data-lang="en">Conference papers</span> <span class="count" data-count="conferences">9</span></button>
     </div>
-    <div id="lec-list"></div>
-    <div class="more-wrap" id="lec-more-wrap"><button type="button" class="more-btn" id="lec-more"></button></div>
+    <div class="tab-panel" id="panel-lec" role="tabpanel" aria-labelledby="tab-lec">
+      <div class="filters slim" role="group" aria-label="강연 유형">
+        <div class="filter-group" id="lec-filters"><span class="label"><span data-lang="ko">유형</span><span data-lang="en">Type</span></span></div>
+      </div>
+      <div id="lec-list"></div>
+      <div class="more-wrap" id="lec-more-wrap"><button type="button" class="more-btn" id="lec-more"></button></div>
+    </div>
+    <div class="tab-panel" id="panel-conf" role="tabpanel" aria-labelledby="tab-conf" hidden>
+      <ol class="confs" id="conf-list"></ol>
+    </div>
   </section>
 
-  <!-- ===================== VI. CONFERENCES ===================== -->
-  <section class="section wrap" id="conferences" data-run-ko="VI. 학술 발표" data-run-en="VI. Conferences">
+  <!-- ===================== AWARDS ===================== -->
+  <section class="section wrap" id="awards">
     <header class="sec-head">
-      <span class="sec-num">VI</span>
-      <h2 class="sec-title">학술 발표<span class="sec-en">Conferences</span></h2>
-      <span class="sec-folio">p. 08</span>
+      <p class="kicker"><i class="kdot"></i>Awards</p>
+      <h2>수상 <em>Awards</em></h2>
     </header>
-    <ol class="dispatches" id="conf-list"></ol>
+    <ul class="awards" id="awards-list"></ul>
   </section>
-
 </main>
 
-<!-- ===================== COLOPHON ===================== -->
-<footer class="colophon wrap" id="colophon">
-  <div class="colophon-inner">
-    <div class="colophon-mark" data-knot aria-hidden="true"></div>
-    <p class="colophon-title">Curriculum <i>Vitæ</i></p>
-    <p class="colophon-line"><span data-lang="ko">김용수의 연구와 교육을 한 호의 문예지처럼 엮은 온라인 이력서입니다.</span><span data-lang="en">An online curriculum vitae of Yongsoo Kim, bound like an issue of a literary journal.</span></p>
-  </div>
-  <div class="colophon-foot">
+<footer class="footer wrap">
+  <p class="footer-line"><span data-lang="ko">김용수의 연구와 교육을 하나의 연결망으로 엮은 온라인 공간입니다.</span><span data-lang="en">An online space where Yongsoo Kim’s research and teaching are woven into one network.</span></p>
+  <div class="footer-foot">
     <span>© <span id="year-now">2026</span> 김용수 Yongsoo Kim · <span data-lang="ko">한림대학교</span><span data-lang="en">Hallym University</span></span>
-    <span class="colophon-actions">
+    <span class="footer-actions">
       <button type="button" class="text-btn" id="print-btn"><span data-lang="ko">인쇄용 보기</span><span data-lang="en">Print</span></button>
       <a class="text-btn" href="#top"><span data-lang="ko">맨 위로 ↑</span><span data-lang="en">Back to top ↑</span></a>
     </span>
   </div>
 </footer>
-</div>
 
 <script src="assets/js/data.js"></script>
 <script src="assets/js/main.js"></script>
