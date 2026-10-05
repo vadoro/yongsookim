@@ -14,6 +14,7 @@
 - **연구 성과**: 연도별 논문·저서 그림(블록 하나 = 한 편)과 주제·유형·검색·키워드 필터
 - **강연·발표**: 초청 강연(유형별 필터, 접기)과 학술 발표를 탭으로 나눴습니다
 - 한국어/영어 전환, 읽기 진행 표시줄, 현재 섹션 표시, 인쇄용 보기
+- **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록을 보여 줍니다.
 
 빌드 과정이 없는 정적 사이트입니다(HTML · CSS · JavaScript, 외부 라이브러리 없음).
 
@@ -42,9 +43,11 @@ GitHub Pages는 브랜치 하나만 공개할 수 있습니다. 이 버전을 �
 ## 파일 구조
 
 ```
-index.html            페이지 구조
+index.html            첫 화면
 assets/css/style.css  디자인 토큰, 레이아웃, 인쇄 스타일
 assets/js/data.js     이력 데이터와 키워드 사전
 assets/js/main.js     연결망 레이아웃(포스 시뮬레이션)과 모든 인터랙션
+tutorials.html        DH Tutorials 페이지
+assets/js/tutorials.js  DH Tutorials 페이지의 목록과 언어 전환
 assets/img/           사진
 ```
