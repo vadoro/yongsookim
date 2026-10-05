@@ -36,9 +36,9 @@ python3 -m http.server 8000
 # http://localhost:8000 접속
 ```
 
-## GitHub Pages로 공개하기
+## 공개 주소
 
-GitHub Pages는 브랜치 하나만 공개할 수 있습니다. 이 버전을 공개하려면 **Settings → Pages**에서 브랜치를 `network-constellation` / `(root)`로 바꾸거나, 이 브랜치를 `main`에 병합하세요.
+`main` 브랜치는 Vercel 프로젝트 `yongsookim`에 연결되어 있어, `main`에 push하면 https://yongsookim.vercel.app 에 자동으로 배포됩니다. 다른 브랜치를 push하면 미리보기 주소가 따로 생깁니다.
 
 ## 파일 구조
 
