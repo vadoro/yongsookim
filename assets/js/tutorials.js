@@ -22,15 +22,10 @@
     ]
   };
 
-  var root = document.documentElement;
+  var P = window.Page;
+  var esc = P.esc, lang = P.lang;
   var $ = function (s, el) { return (el || document).querySelector(s); };
   var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
-  function lang() { return root.getAttribute("lang") === "en" ? "en" : "ko"; }
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
   function abs(u) { return !u ? "" : /^https?:\/\//.test(u) ? u : BASE + String(u).replace(/^\.?\//, ""); }
 
   var T = {
@@ -81,54 +76,5 @@
     $("#tut-count").textContent = T[lang()].count(cat.tutorials.length);
   }
   window.DHT = { render: render };
-
-  /* language */
-  function applyLang(l) {
-    root.setAttribute("lang", l);
-    $$("[data-set-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === l ? "true" : "false"); });
-    render();
-  }
-  $$("[data-set-lang]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var l = b.getAttribute("data-set-lang");
-      try { localStorage.setItem("cv-lang", l); } catch (e) { /* storage unavailable */ }
-      applyLang(l);
-    });
-  });
-
-  /* stars & progress (same look as the home page) */
-  function mulberry32(a) {
-    return function () {
-      a |= 0; a = a + 0x6D2B79F5 | 0;
-      var t1 = Math.imul(a ^ a >>> 15, 1 | a);
-      t1 = t1 + Math.imul(t1 ^ t1 >>> 7, 61 | t1) ^ t1;
-      return ((t1 ^ t1 >>> 14) >>> 0) / 4294967296;
-    };
-  }
-  function drawStars() {
-    var c = $("#stars");
-    if (!c || !c.getContext) return;
-    var dpr = Math.min(2, window.devicePixelRatio || 1), w = window.innerWidth, h = window.innerHeight;
-    c.width = w * dpr; c.height = h * dpr;
-    var ctx = c.getContext("2d");
-    ctx.scale(dpr, dpr);
-    var rnd = mulberry32(11), n = Math.round(w * h / 7000);
-    for (var i = 0; i < n; i++) {
-      var x = rnd() * w, y = rnd() * h, r = rnd() < 0.92 ? 0.3 + rnd() * 0.7 : 1 + rnd() * 0.6, a = 0.12 + rnd() * 0.5;
-      ctx.fillStyle = rnd() < 0.15 ? "rgba(108,224,240," + a + ")" : "rgba(220,230,255," + a + ")";
-      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
-    }
-  }
-  function progress() {
-    var y = window.scrollY || window.pageYOffset, max = document.documentElement.scrollHeight - window.innerHeight;
-    $("#progress-bar").style.transform = "scaleX(" + (max > 0 ? Math.min(1, y / max) : 0) + ")";
-  }
-
-  $("#year-now").textContent = new Date().getFullYear();
-  drawStars();
-  var tmr;
-  window.addEventListener("resize", function () { clearTimeout(tmr); tmr = setTimeout(drawStars, 200); progress(); });
-  window.addEventListener("scroll", progress, { passive: true });
-  applyLang(lang());
-  progress();
+  P.onLang(render);
 })();

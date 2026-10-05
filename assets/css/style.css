@@ -652,9 +652,55 @@ a.btn { text-decoration: none; }
 .tut-card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
 .tut-noscript a { color: var(--cyan); }
 
+/* ---------- slides page ---------- */
+.decks { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(2rem, 5vw, 3.5rem); }
+.deck {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+.deck-cover {
+  container-type: inline-size;
+  position: relative;
+  display: flex; flex-direction: column; justify-content: space-between;
+  aspect-ratio: 16 / 9; max-width: 100%;
+  padding: 6.6cqw 6.6cqw 5.5cqw;
+  border-radius: 14px;
+  border: 1px solid var(--line-2);
+  background: radial-gradient(circle at 85% 12%, var(--d-glow) 0%, var(--d-bg) 58%);
+  color: var(--d-ink);
+  text-decoration: none;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+}
+.deck-cover:hover { color: var(--d-ink); transform: translateY(-3px); border-color: var(--d-accent); box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5); }
+.dc-prompt { font-family: var(--font-mono); font-size: max(10px, 1.6cqw); letter-spacing: 0.1em; color: var(--d-accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dc-main { display: grid; gap: 1.6cqw; }
+.dc-title { font-weight: 700; font-size: 10.5cqw; line-height: 1; letter-spacing: -0.04em; }
+.dc-sub { font-weight: 600; font-size: 3.6cqw; line-height: 1.2; color: var(--d-muted); }
+.dc-foot { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: max(10px, 1.5cqw); color: var(--d-muted); letter-spacing: 0.06em; }
+.deck-body { display: grid; gap: 0.75rem; min-width: 0; }
+.deck-kicker { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); }
+.deck-title { display: grid; gap: 0.2rem; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+.deck-title a { text-decoration: none; }
+.deck-sub { font-size: var(--fs-md); font-weight: 500; color: var(--ink-2); letter-spacing: -0.01em; }
+.deck-sum { color: var(--ink-2); line-height: 1.8; }
+.deck-outline { border-top: 1px solid var(--line-2); padding-top: 0.75rem; margin-top: 0.25rem; }
+.deck-outline .label { margin-bottom: 0.4rem; }
+.deck-outline ol { margin: 0; padding: 0; list-style: none; counter-reset: part; display: grid; gap: 0.35rem; }
+.deck-outline li { counter-increment: part; display: grid; grid-template-columns: 2rem minmax(0, 1fr); font-size: var(--fs-sm); line-height: 1.6; }
+.deck-outline li::before { content: counter(part, decimal-leading-zero); font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-3); padding-top: 0.15em; }
+.deck-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin-top: 0.5rem; }
+.deck-meta { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-3); }
+.deck-section { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+.decks .empty { border-top: 0; }
+
 /* ---------- responsive ---------- */
 @media (max-width: 1023px) {
   .tut-hero { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .deck { grid-template-columns: minmax(0, 1fr); }
   .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "graph" "insp"; grid-template-rows: auto; }
   .graph-wrap { height: clamp(520px, 80vw, 620px); }
   .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -667,7 +713,9 @@ a.btn { text-decoration: none; }
 @media (max-width: 760px) {
   :root { --topbar-h: 52px; }
   .nav a[data-nav] { display: none; }
-  .nav a.nav-page { margin-left: 0; font-size: var(--fs-xs); padding: 0.3rem 0.7rem; }
+  .nav { gap: 0.3rem; }
+  .nav a.nav-page { margin-left: 0; font-size: var(--fs-xs); padding: 0.3rem 0.6rem; }
+  .topbar-inner { gap: 0.6rem; }
   .about-grid { grid-template-columns: minmax(0, 1fr); }
   .ego-ring { width: min(70%, 240px); }
   .facts { grid-template-columns: minmax(0, 1fr); }
@@ -698,6 +746,9 @@ a.btn { text-decoration: none; }
   .stat:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .awards { grid-template-columns: minmax(0, 1fr); }
   .brand-name em { display: none; }
+}
+@media (max-width: 420px) {
+  .brand-name { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

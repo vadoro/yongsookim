@@ -14,6 +14,7 @@
 - **연구 성과**: 연도별 논문·저서 그림(블록 하나 = 한 편)과 주제·유형·검색·키워드 필터
 - **강연·발표**: 초청 강연(유형별 필터, 접기)과 학술 발표를 탭으로 나눴습니다
 - 한국어/영어 전환, 읽기 진행 표시줄, 현재 섹션 표시, 인쇄용 보기
+- **발표 자료** (`slides.html`): 강연·발표 슬라이드 목록입니다. 목록은 `assets/js/data.js`의 `slides`에서 그립니다(아래 '발표 자료 추가하기').
 - **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록을 보여 줍니다.
 
 빌드 과정이 없는 정적 사이트입니다(HTML · CSS · JavaScript, 외부 라이브러리 없음).
@@ -28,6 +29,27 @@
 - **`keywords`**: 표지 연결망의 키워드 사전입니다. `match`에 적은 문자열 중 하나가 제목에 들어 있으면 그 키워드가 나온 것으로 셉니다. 키워드를 추가·삭제하거나 `match`를 고치면 연결망이 다시 계산됩니다. `group`은 노드 색입니다.
 
 표지 사진은 `assets/img/profile.jpg`(800×1000)입니다.
+
+### 발표 자료 추가하기
+
+`assets/js/data.js` 맨 아래 `slides` 배열에 항목 하나를 추가하면 발표 자료 페이지에 카드가 생깁니다. 연도(`year`)와 날짜(`date`)가 최근인 것부터 위에 놓입니다.
+
+```js
+{
+  title: "발표 제목",
+  subtitle: "부제",
+  kind: "Keynote",             // 표지 위 작은 글씨
+  year: 2027,
+  date: "2027.03.15",          // 없으면 ""
+  slides: 20,                  // 슬라이드 수
+  url: "https://claude.ai/artifact/...",
+  summary: { ko: "한두 문장 소개", en: "One or two sentences" },
+  outline: ["1부 제목", "2부 제목"],
+  cover: { bg: "#15171C", glow: "#2C3A1B", ink: "#EDEAE3", accent: "#C8F169", muted: "#AEB4BF", prompt: "표지 맨 위 한 줄" }
+}
+```
+
+Claude 아티팩트로 만든 슬라이드는 공유 설정을 **링크가 있는 누구나 볼 수 있게** 해 두어야 방문자가 열 수 있습니다.
 
 ## 로컬에서 보기
 
@@ -47,7 +69,10 @@ index.html            첫 화면
 assets/css/style.css  디자인 토큰, 레이아웃, 인쇄 스타일
 assets/js/data.js     이력 데이터와 키워드 사전
 assets/js/main.js     연결망 레이아웃(포스 시뮬레이션)과 모든 인터랙션
+slides.html           발표 자료 페이지
+assets/js/slides.js   발표 자료 목록
 tutorials.html        DH Tutorials 페이지
-assets/js/tutorials.js  DH Tutorials 페이지의 목록과 언어 전환
+assets/js/tutorials.js  DH Tutorials 페이지의 목록
+assets/js/page.js     하위 페이지 공통(언어 전환, 별 배경, 진행 표시줄)
 assets/img/           사진
 ```
