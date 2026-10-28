@@ -40,7 +40,7 @@
       original: "원저",
       lecAll: "전체", keynote: "기조 강연", talk: "주제 발표", lectureType: "특강·강연",
       more: function (n) { return "이전 강연 " + n + "건 더 보기"; }, less: "접기",
-      abroad: "해외 발표", session: "Session",
+      abroad: "해외 발표", session: "Session", slidesLink: "슬라이드",
       present: "현재",
       now: function (d) { return "현재 " + d; },
       copied: "복사됨 ✓",
@@ -83,7 +83,7 @@
       original: "Original",
       lecAll: "All", keynote: "Keynotes", talk: "Panel talks", lectureType: "Lectures",
       more: function (n) { return "Show " + n + " earlier lectures"; }, less: "Show fewer",
-      abroad: "Abroad", session: "Session",
+      abroad: "Abroad", session: "Session", slidesLink: "Slides",
       present: "present",
       now: function (d) { return "Now " + d; },
       copied: "Copied ✓",
@@ -1154,7 +1154,9 @@
           return '<li class="lec"' + (x.hidden ? " hidden" : "") + '><span class="lec-type' + (l.type === "keynote" ? " is-keynote" : "") + '">' + esc(chip) + "</span>" +
             '<div class="lec-body"><p class="lec-title">' + title + "</p>" +
             (l.subtitle ? '<p class="lec-sub">' + esc(l.subtitle) + "</p>" : "") +
-            '<p class="lec-where">' + esc(l.where) + "</p></div>" +
+            '<p class="lec-where">' + esc(l.where) + "</p>" +
+            (l.slides ? '<p class="lec-links"><a class="doi" href="' + esc(l.slides) + '" target="_blank" rel="noopener">' + esc(t("slidesLink")) + " ↗</a></p>" : "") +
+            "</div>" +
             '<span class="lec-date">' + esc(l.date) + "</span></li>";
         }).join("") + "</ol></section>";
     }).join("");

@@ -156,8 +156,10 @@ window.CV = {
     { year: 2010, title: "정치, 사회적 개념의 역사: 비판적 소개", author: "멜빈 릭터", role: "공역", publisher: "소화", original: "Melvin Richter, *The History of Political and Social Concepts: A Critical Introduction* (Oxford University Press, 1995)", themes: [] }
   ],
 
-  /* type: keynote(기조 강연) | talk(주제 발표) | lecture(특강·강연·초청 강연) */
+  /* type: keynote(기조 강연) | talk(주제 발표·발표) | lecture(특강·강연·초청 강연)
+     slides: 발표 슬라이드 주소가 있으면 적으세요. 항목 옆에 '슬라이드' 링크가 생깁니다. */
   lectures: [
+    { year: 2026, date: "2026.10.27", type: "talk", label: "발표", title: "Vibe Learning: AI 활용 교육의 사례와 가능성", where: "한림대학교 인문학연구소, 제174회 학술집담회, 소울로스터리", slides: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG" },
     { year: 2026, date: "2026.05.30", type: "keynote", label: "기조 강연", title: "비평이론 30년과 그 너머", where: "한국비평이론학회 2026년 봄 학술대회, “동시대 비평이론의 지형과 새로운 비평의 가능성,” 충북대학교" },
     { year: 2025, date: "2025.11.06", type: "lecture", label: "특강", title: "공기어 연결망을 통한 서사 분석", where: "경북대학교 영어영문학과" },
     { year: 2025, date: "2025.10.23", type: "lecture", label: "강연", title: "생성형 AI 시대, 디지털인문학의 세계", where: "유라시아재단, “석학강좌-디지털 AI시대 동아시아의 역할과 미래,” 경성대 중앙도서관" },
@@ -269,7 +271,7 @@ window.CV = {
       subtitle: "AI 활용 교육의 사례와 가능성",
       kind: "Faculty Talk",
       year: 2026,
-      date: "",
+      date: "2026.10.27",
       slides: 34,
       url: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG",
       summary: {
