@@ -615,7 +615,7 @@ a.btn { text-decoration: none; }
 .tf-k { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--cyan); }
 .tut-grid {
   list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 1.5rem;
 }
 .tut-card {
   display: flex; flex-direction: column; min-width: 0; overflow: hidden;

@@ -15,7 +15,7 @@
 - **강연·발표**: 초청 강연(유형별 필터, 접기)과 학술 발표를 탭으로 나눴습니다
 - 한국어/영어 전환, 읽기 진행 표시줄, 현재 섹션 표시, 인쇄용 보기
 - **발표 자료** (`slides.html`): 강연·발표 슬라이드 목록입니다. 목록은 `assets/js/data.js`의 `slides`에서 그립니다(아래 '발표 자료 추가하기').
-- **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록을 보여 줍니다.
+- **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록(지금은 네 편)을 보여 줍니다. 영상(MP4)은 [GitHub Releases의 `videos`](https://github.com/vadoro/dh_tutorials/releases/tag/videos)에 있고, 카드의 'MP4 내려받기'를 누르면 파일이 내려받아집니다.
 
 빌드 과정이 없는 정적 사이트입니다(HTML · CSS · JavaScript, 외부 라이브러리 없음).
 
