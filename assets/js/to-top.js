@@ -1,5 +1,6 @@
 /* 모든 페이지가 함께 쓰는 '맨 위로' 단추 (영어 튜토리얼 · DH 튜토리얼 사이트와 같은 동작).
  * 한 화면쯤 내려가면 오른쪽 아래에 나타나고, 누르면 페이지 맨 위로 올라갑니다.
+ * 페이지가 짧아 한 화면만큼 내려갈 수 없으면, 내려갈 수 있는 거리의 절반(최소 400px)에서 나타납니다.
  * 넓은 화면에서는 화살표 + 글자, 휴대폰 너비에서는 화살표만 있는 동그란 단추입니다(모양은 style.css의 .to-top).
  * 키보드로 누르면 맨 위의 제목(h1)으로 초점도 옮깁니다. */
 (function () {
@@ -17,7 +18,8 @@
   var queued = false;
   function sync() {
     queued = false;
-    var on = window.scrollY > Math.max(400, window.innerHeight * 0.9);
+    var room = document.documentElement.scrollHeight - window.innerHeight;
+    var on = window.scrollY > Math.max(400, Math.min(window.innerHeight * 0.9, room / 2));
     btn.classList.toggle("on", on);
     btn.tabIndex = on ? 0 : -1;
     if (!on && document.activeElement === btn) btn.blur();
