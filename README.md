@@ -14,6 +14,7 @@
 - **연구 성과**: 연도별 논문·저서 그림(블록 하나 = 한 편)과 주제·유형·검색·키워드 필터
 - **강연·발표**: 초청 강연(유형별 필터, 접기)과 학술 발표를 탭으로 나눴습니다
 - 한국어/영어 전환, 읽기 진행 표시줄, 현재 섹션 표시, 인쇄용 보기
+- 모든 페이지 오른쪽 아래의 '맨 위로' 단추: 한 화면쯤 내려가면 나타납니다(`assets/js/to-top.js`, 영어 튜토리얼 · DH 튜토리얼 사이트와 같은 동작).
 - 위쪽 메뉴: 화면이 1000px 이하로 좁아지면 첫 화면 섹션 링크를 숨기고 페이지 링크(발표 자료 · DH Tutorials · English Tutorials)만 둡니다. 휴대폰처럼 그래도 넘치면 메뉴를 옆으로 밀어 볼 수 있고, 지금 보는 페이지의 링크가 보이도록 맞춰 둡니다.
 - **발표 자료** (`slides.html`): 강연·발표 슬라이드 목록입니다. 목록은 `assets/js/data.js`의 `slides`에서 그립니다(아래 '발표 자료 추가하기').
 - **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록(지금은 네 편)을 보여 줍니다. 방문자가 튜토리얼 사이트로 오도록 카드에는 '인터랙티브로 보기'만 두고, MP4 내려받기 링크는 넣지 않습니다(카탈로그의 `video` 항목은 쓰지 않음).
@@ -79,5 +80,6 @@ assets/js/tutorials.js  DH Tutorials 페이지의 목록
 english.html          English Tutorials 페이지
 assets/js/english.js  English Tutorials 페이지의 목록
 assets/js/page.js     하위 페이지 공통(언어 전환, 별 배경, 진행 표시줄)
+assets/js/to-top.js   모든 페이지의 '맨 위로' 단추
 assets/img/           사진
 ```

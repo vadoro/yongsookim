@@ -575,6 +575,8 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 
 /* ---------- footer ---------- */
 .footer { padding-top: clamp(4rem, 9vw, 7rem); padding-bottom: clamp(2rem, 5vw, 3rem); }
+/* leave room under the footer links for the fixed back-to-top button */
+html.js .footer { padding-bottom: calc(44px + 2.5rem); }
 .footer-line {
   text-align: center; color: var(--ink-2); font-size: var(--fs-base);
   padding-top: 2.5rem; border-top: 1px solid var(--line-2); position: relative;
@@ -589,6 +591,21 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
   font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-3); letter-spacing: 0.04em;
 }
 .footer-actions { display: inline-flex; gap: 1.25rem; }
+
+/* back-to-top button (assets/js/to-top.js) */
+.to-top {
+  position: fixed; z-index: 45;
+  right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  display: inline-flex; align-items: center; gap: 0.45rem; height: 44px; padding: 0 1rem 0 0.8rem;
+  border: 1px solid var(--line-2); border-radius: 999px; background: var(--panel-solid); color: var(--ink);
+  box-shadow: 0 10px 26px -12px rgba(0, 0, 0, 0.8), 0 0 22px rgba(108, 224, 240, 0.12);
+  font-size: var(--fs-sm); font-weight: 500; cursor: pointer;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity .2s, transform .2s, visibility 0s linear .2s, border-color .15s, color .15s;
+}
+.to-top.on { opacity: 1; visibility: visible; transform: none; transition: opacity .2s, transform .2s, visibility 0s, border-color .15s, color .15s; }
+.to-top:hover { border-color: var(--cyan); color: var(--cyan); }
+.to-top svg { width: 18px; height: 18px; flex: none; }
 
 /* ---------- DH tutorials page ---------- */
 .tut-hero {
@@ -774,6 +791,8 @@ a.btn { text-decoration: none; }
   .stat:nth-child(2n + 1) { border-left: 0; padding-left: 0; }
   .stat:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .awards { grid-template-columns: minmax(0, 1fr); }
+  .to-top { width: 44px; padding: 0; justify-content: center; }
+  .to-top-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
 @media (max-width: 420px) {
   .brand-name { display: none; }
@@ -787,7 +806,7 @@ a.btn { text-decoration: none; }
 @media print {
   :root { --bg: #fff; --panel: #fff; --panel-solid: #fff; --ink: #000; --ink-2: #333; --ink-3: #555; --line: #ccc; --line-2: #999; --cyan: #000; --amber: #000; }
   body { background: #fff; font-size: 10.5pt; line-height: 1.55; }
-  #stars, .progress, .topbar, .graph-figure, .inspector, .filters, .chart-figure, .results-bar, .more-wrap, .copy-btn, .footer-actions, .tabs, .ego, .seg, .pill-link { display: none !important; }
+  #stars, .progress, .topbar, .to-top, .graph-figure, .inspector, .filters, .chart-figure, .results-bar, .more-wrap, .copy-btn, .footer-actions, .tabs, .ego, .seg, .pill-link { display: none !important; }
   .hero { display: block; padding-block: 0; }
   .name-en { text-shadow: none; }
   .section { padding-top: 1.25rem; }
