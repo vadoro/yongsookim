@@ -1,5 +1,5 @@
-/* 하위 페이지(DH Tutorials, 발표 자료)가 함께 쓰는 공통 동작:
- * 언어 전환, 별 배경, 읽기 진행 표시줄, 연도 표시.
+/* 하위 페이지(발표 자료, DH Tutorials, English Tutorials)가 함께 쓰는 공통 동작:
+ * 언어 전환, 별 배경, 읽기 진행 표시줄, 연도 표시, 좁은 화면의 메뉴 위치.
  * 페이지 스크립트는 Page.onLang(render)로 그리기 함수를 등록합니다. */
 (function () {
   "use strict";
@@ -16,10 +16,19 @@
     });
   }
 
+  /* 좁은 화면에서 메뉴가 옆으로 넘치면 지금 페이지의 링크가 보이도록 밀어 둡니다. */
+  function revealActive() {
+    var nav = $(".nav"), a = $(".nav a.nav-page.is-active");
+    if (!nav || !a || nav.scrollWidth <= nav.clientWidth) return;
+    var over = a.getBoundingClientRect().right - nav.getBoundingClientRect().right;
+    if (over > 0) nav.scrollLeft += over;
+  }
+
   function applyLang(l) {
     root.setAttribute("lang", l);
     $$("[data-set-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-set-lang") === l ? "true" : "false"); });
     hooks.forEach(function (fn) { fn(l); });
+    revealActive();
   }
   $$("[data-set-lang]").forEach(function (b) {
     b.addEventListener("click", function () {
@@ -66,6 +75,7 @@
   window.addEventListener("scroll", progress, { passive: true });
   applyLang(lang());
   progress();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(revealActive);
 
   window.Page = {
     lang: lang,

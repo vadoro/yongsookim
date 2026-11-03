@@ -1,0 +1,234 @@
+/* English Tutorials 페이지
+ * 영역(tracks)과 튜토리얼 목록은 영어 튜토리얼 사이트의 assets/catalog.js (window.EN_CATALOG)에서 읽습니다.
+ * 그 파일을 불러오지 못하면 아래 FALLBACK 목록을 보여 줍니다. */
+(function () {
+  "use strict";
+
+  var BASE = "https://engtutorials.vercel.app/";
+  /* DH Tutorials 페이지처럼 카드에는 '인터랙티브로 보기'만 둡니다. */
+  var FALLBACK = {
+    tracks: [
+      {
+        id: "toeic", title: "토익", short: "토익", status: "open",
+        summary: "토익에서 자주 틀리는 유형 100개를 튜토리얼 17개로. 문법(Part 5·6)부터 듣기(Part 1–4), 독해(Part 7)까지 원리와 풀이법을 모션그래픽 영상, 직접 해 보기, 연습 문제로 익혀요."
+      },
+      {
+        id: "talk", title: "상황별 영어 회화", short: "영어 회화", status: "open",
+        summary: "공항, 카페, 호텔처럼 실제 장소에서 오가는 대화를 듣고 따라 말하며 익혀요. 곳마다 거의 정해진 질문의 열쇠 낱말을 잡고, 짧은 대답 틀에 내 정보를 넣어 공손하게 답해요."
+      }
+    ],
+    tutorials: [
+      {
+        slug: "relative-pronouns", track: "toeic", title: "관계대명사, 빈자리를 찾아라", topic: "관계대명사 · who · whom · which · that · whose · what",
+        summary: "두 문장이 하나로 합쳐지는 원리, 관계사절 속 빈자리 찾기, 그리고 토익 문제를 앞 → 뒤 → 함정 3단계로 푸는 법을 배워요.",
+        length: "6:36", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "문장 합치기 놀이터", "연습 문제 16", "퀴즈"],
+        thumb: "relative-pronouns/docs/poster.jpg"
+      },
+      {
+        slug: "parts-of-speech", track: "toeic", title: "빈칸의 자리가 품사를 정한다", topic: "품사 자리 · 명사 · 형용사 · 부사",
+        summary: "같은 뿌리의 보기 네 개 중에서 고르는 품사 문제를 해석 없이 푸는 법. 낱말의 꼬리(접미사)와 빈칸의 자리, 보기 → 자리 → 꼬리 3단계 풀이법을 배워요.",
+        length: "6:22", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "3초 품사 감각 훈련", "낱말 가족 사전", "연습 문제 16", "퀴즈"],
+        thumb: "parts-of-speech/docs/poster.jpg"
+      },
+      {
+        slug: "verb-agreement-voice", track: "toeic", title: "주어가 수를, 목적어가 태를 정한다", topic: "수 일치 · 능동태 · 수동태 · 자동사",
+        summary: "같은 동사의 여러 모양 가운데 하나를 고르는 동사 문제를 원리로 푸는 법. 수식어를 지워 진짜 주어를 찾고, 빈칸 뒤의 목적어로 능동·수동을 가르는 주어 → 수 → 뒤 3단계 풀이법을 배워요.",
+        length: "6:29", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "능동·수동 변환기", "진짜 주어 누르기", "연습 문제 16", "퀴즈"],
+        thumb: "verb-agreement-voice/docs/poster.jpg"
+      },
+      {
+        slug: "verb-tense", track: "toeic", title: "시간선 위에 동사를 놓아라", topic: "시제 · 현재완료 · 미래완료 · 부사절 · 동사원형",
+        summary: "시제 문제를 해석 대신 시간 단서로 푸는 법. 단서를 시간선에 놓고 과거·현재완료·미래·완료형을 고르고, 부사절의 현재 시제와 요구·제안 that절의 동사원형 함정을 단서 → 시간선 → 모양 3단계로 익혀요.",
+        length: "6:26", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "시간선 시제 기계", "연습 문제 16", "퀴즈"],
+        thumb: "verb-tense/docs/poster.jpg"
+      },
+      {
+        slug: "connectors", track: "toeic", title: "접속사냐 전치사냐, 빈칸 뒤가 답한다", topic: "연결어 · 접속사 · 전치사 · 접속부사",
+        summary: "뜻이 같은 although와 despite 가운데 하나만 답이 되는 까닭. 빈칸 뒤가 명사구냐 절이냐로 갈래를 정하고, 뒤 → 갈래 → 뜻 3단계로 연결어 문제를 풀어요.",
+        length: "5:52", scenes: 11, features: ["음성 해설", "발음 듣기", "장면별 실습", "연결어 조립대", "연결어 사전", "연습 문제 16", "퀴즈"],
+        thumb: "connectors/docs/poster.jpg"
+      },
+      {
+        slug: "nouns-articles", track: "toeic", title: "명사 검문소를 통과하라", topic: "명사 · 관사 · 수량 표현 · almost · most of",
+        summary: "한국어 ‘책 샀어’가 영어에서는 a book · the book · books로 갈라지는 까닭. 셀 수 있나 → 하나인가 여럿인가 → 짝이 맞나, 명사 검문소의 세 문으로 관사와 수량 표현 문제를 풀어요.",
+        length: "6:02", scenes: 11, features: ["음성 해설", "발음 듣기", "장면별 실습", "명사 검문소 놀이터", "연습 문제 16", "퀴즈"],
+        thumb: "nouns-articles/docs/poster.jpg"
+      },
+      {
+        slug: "infinitives-gerunds", track: "toeic", title: "진짜 동사는 하나, 나머지는 to와 -ing", topic: "동사 자리 · to부정사 · 동명사 · 타동사와 자동사",
+        summary: "같은 동사의 네 모양(open · to open · opening · opened) 가운데 답을 고르는 법. 한 문장에 시제를 가진 진짜 동사는 하나, 나머지 동사의 모양은 빈칸 앞 낱말이 골라요. 진짜 동사 → 앞 → 뒤 3단계로 풀어요.",
+        length: "6:24", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "동사 옷 입히기", "동사 짝 사전", "연습 문제 16", "퀴즈"],
+        thumb: "infinitives-gerunds/docs/poster.jpg"
+      },
+      {
+        slug: "participles", track: "toeic", title: "-ing냐 -ed냐, 주인에게 물어라", topic: "분사 · 현재분사 · 과거분사 · 감정 분사 · 분사구문",
+        summary: "분사가 꾸미는 말(주인)이 그 일을 하는가, 당하는가? 이 한 질문으로 명사 앞뒤의 분사, 감정 분사(exciting · excited), 분사구문을 주인 → 질문 → 확인 3단계로 풀어요.",
+        length: "6:36", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "주인 바꾸기 실험실", "연습 문제 16", "퀴즈"],
+        thumb: "participles/docs/poster.jpg"
+      },
+      {
+        slug: "relative-adverbs-noun-clauses", track: "toeic", title: "빈자리가 있느냐 없느냐, 그것이 문제로다", topic: "관계부사 · 복합관계사 · 명사절 · that · what · whether",
+        summary: "관계대명사 튜토리얼의 빈자리를 넓혀, 빈칸 뒤 문장에 빈자리가 있나 없나로 관계부사 · whoever · however · that · what · whether를 가르는 법. 뒤 → 앞 → 함정 3단계로 풀어요.",
+        length: "6:34", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "빈자리 탐지기", "연습 문제 16", "퀴즈"],
+        thumb: "relative-adverbs-noun-clauses/docs/poster.jpg"
+      },
+      {
+        slug: "pronouns", track: "toeic", title: "가리키는 말이 줄을, 자리가 칸을 정한다", topic: "대명사 · 격 · 재귀대명사 · one · the other · that · those",
+        summary: "they · them · their · theirs · themselves 가운데 하나를 고르는 법. 빈칸이 가리키는 말로 대명사 표의 줄을, 빈칸의 자리로 칸을 정하고, -self · the other · those of 같은 짝을 화살표 → 자리 → 짝 3단계로 확인해요.",
+        length: "6:30", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "대명사 표 놀이터", "연습 문제 16", "퀴즈"],
+        thumb: "pronouns/docs/poster.jpg"
+      },
+      {
+        slug: "prepositions", track: "toeic", title: "전치사, 그림으로 보고 짝으로 외워라", topic: "전치사 · 시간 · 장소 · by와 until · for와 during · 짝 표현",
+        summary: "한국어 ‘까지’가 by와 until로, ‘동안’이 for와 during으로 나뉘는 까닭. 시간과 장소는 시간선 · 공간 그림으로 보고, 앞 낱말이 고르는 전치사는 짝 카드로 외워요. 무엇 → 뒤의 명사 → 그림 · 짝 3단계로 풀어요.",
+        length: "6:36", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "까지 갈림길", "짝 카드", "연습 문제 16", "퀴즈"],
+        thumb: "prepositions/docs/poster.jpg"
+      },
+      {
+        slug: "comparison-inversion", track: "toeic", title: "신호어가 짝을 부른다", topic: "비교 · 최상급 · 가정법 · 도치",
+        summary: "as는 원급을, than은 비교급을, 맨 앞의 Had는 숨은 if를, 맨 앞의 Only after는 ‘조동사 + 주어’를 불러요. 문장 속 신호어 하나가 정하는 짝으로 비교·가정법·도치 문제를 신호어 → 짝 → 함정 3단계로 풀어요.",
+        length: "6:17", scenes: 11, features: ["음성 해설", "발음 듣기", "장면별 실습", "신호어 스위치", "연습 문제 16", "퀴즈"],
+        thumb: "comparison-inversion/docs/poster.jpg"
+      },
+      {
+        slug: "vocabulary", track: "toeic", title: "낱말에도 단짝이 있다", topic: "어휘 · 짝 표현(콜로케이션) · 닮은꼴 형용사 · 부사 · 헷갈리는 동사",
+        summary: "보기 네 개가 모두 문법적으로 들어갈 수 있는 어휘 문제는 빈칸의 짝이 답을 정해요. 짝 찾기 → 짝 맞추기 → 함정 확인 3단계로 풀고, 틀린 카드가 더 빨리 돌아오는 짝 카드로 짝을 쌓아요.",
+        length: "4:59", scenes: 10, features: ["음성 해설", "발음 듣기", "장면별 실습", "짝 카드 89장", "짝 사전", "연습 문제 16", "퀴즈"],
+        thumb: "vocabulary/docs/poster.jpg"
+      },
+      {
+        slug: "part6-text", track: "toeic", title: "한 문장으론 모른다, 앞뒤 문장이 답한다", topic: "Part 6 · 글로 정하는 시제 · 접속부사 · 문장 넣기",
+        summary: "빈칸 문장만 보면 보기 두세 개가 다 맞아 보이는 Part 6 문제. 머리말의 날짜, 두 문장의 관계, 가리키는 말(this · these)로 보기를 하나로 줄여요. 빈칸 문장 → 앞뒤 문장 → 글 전체 3단계로 풀어요.",
+        length: "6:16", scenes: 11, features: ["음성 해설", "발음 듣기", "장면별 실습", "문맥 손전등", "지문 연습 문제 16", "퀴즈"],
+        thumb: "part6-text/docs/poster.jpg"
+      },
+      {
+        slug: "listening-part1-2", track: "toeic", title: "첫 단어를 잡고, 들린 단어를 의심하라", topic: "듣기 Part 1 사진 묘사 · Part 2 질의응답",
+        summary: "사진은 주인공 → 동작인가 상태인가(putting on · wearing, being p.p. · has been p.p.) → 사진에 없는 말로, 질문은 첫 단어 → 함정(엉뚱한 종류 · 같은 단어 · 비슷한 소리) → 말이 되나로 풀어요. 간접 응답과 한국어와 거꾸로인 Yes · No까지 브라우저 음성으로 들으며 익혀요.",
+        length: "6:35", scenes: 12, features: ["음성 해설", "듣기 문제 음성", "장면별 실습", "함정 감별사", "동작 · 상태 고르기", "듣기 연습 문제 16", "퀴즈"],
+        thumb: "listening-part1-2/docs/poster.jpg"
+      },
+      {
+        slug: "listening-part3-4", track: "toeic", title: "먼저 읽고, 바꿔 말한 답을 잡아라", topic: "듣기 Part 3·4 · 대화와 담화 · 패러프레이즈 · 의도 · 시각 정보",
+        summary: "대화에서 fully booked가 들리면 정답은 No rooms are available. Part 3·4의 정답은 들은 말을 바꿔 말해요. 문제를 먼저 읽고(키워드 · 순서), 신호어 뒤의 근거 줄을 듣고, 바꿔 말한 보기를 고르는 3단계로 풀어요. 화자마다 다른 목소리로 대화를 들어요.",
+        length: "6:27", scenes: 12, features: ["음성 해설", "화자별 대화 듣기", "장면별 실습", "근거 줄 찾기", "의도 파악 실험", "세트 연습 문제 15", "퀴즈"],
+        thumb: "listening-part3-4/docs/poster.jpg"
+      },
+      {
+        slug: "reading-part7", track: "toeic", title: "답은 지문에 있다, 다른 말로", topic: "독해 Part 7 · 목적 · 세부 정보 · NOT · 추론 · 동의어 · 문장 삽입 · 채팅 의도 · 양식 · 이중 · 삼중 지문",
+        summary: "54문제나 되는 Part 7도 글을 다 해석할 필요는 없어요. 정답에는 늘 지문 속 근거 문장이 있고, 정답 보기는 그 근거를 다른 말로 바꿔 말해요. 질문 먼저 → 근거 찾기 → 바꿔 말한 보기 3단계로 열두 가지 문제 유형과 글 둘 · 셋을 잇는 연계 문제를 풀어요.",
+        length: "6:29", scenes: 12, features: ["음성 해설", "발음 듣기", "장면별 실습", "근거 사냥", "지문 연습 문제 16", "퀴즈"],
+        thumb: "reading-part7/docs/poster.jpg"
+      },
+      {
+        slug: "airport", track: "talk", title: "공항, 질문은 정해져 있다", topic: "공항 · 체크인 · 보안 검색 · 기내 · 입국 심사 · 수하물 · 세관",
+        summary: "공항 일곱 곳에서 듣는 질문은 거의 정해져 있어요. 열쇠 낱말로 무엇을 묻는지 잡고, 짧은 대답 틀에 내 정보를 넣고, 공손하게 끝내는 3단계로 말해요. 한국어를 그대로 옮긴 ‘My purpose is trip.’ 대신 ‘I'm here for sightseeing.’, 그리고 못 알아들었을 때 다시 묻는 말까지 듣고 따라 말하며 익혀요.",
+        length: "6:30", scenes: 12, features: ["음성 해설", "화자별 대화 듣기", "장면별 실습", "입국 심사 시뮬레이터", "따라 말하기 28", "듣고 대답 고르기 16", "퀴즈"],
+        thumb: "airport/docs/poster.jpg"
+      },
+      {
+        slug: "cafe", track: "talk", title: "카페, 주문에는 순서가 있다", topic: "카페 · 주문 · 크기와 온도 · 옵션 · 이름과 포장 · 계산 · 음료 받기",
+        summary: "카페 주문대의 질문은 거의 같고 순서도 정해져 있어요. 음료 → 크기 → 온도 → 옵션 → 이름 → 포장 → 계산 → 받기. 순서를 알면 빠른 말도 짐작되고, 한 문장에 순서대로 말하면 바리스타가 질문을 건너뛰어요. ‘Give me ice americano.’ 대신 ‘Can I get an iced americano?’, 사이즈업 · 샷 추가 · 포장 같은 콩글리시와 값 읽기까지 듣고 따라 말하며 익혀요.",
+        length: "6:36", scenes: 12, features: ["음성 해설", "화자별 대화 듣기", "장면별 실습", "카페 주문 시뮬레이터", "한 문장 주문", "따라 말하기 28", "듣고 대답 고르기 16", "퀴즈"],
+        thumb: "cafe/docs/poster.jpg"
+      },
+      {
+        slug: "hotel", track: "talk", title: "호텔, 부탁은 질문으로 한다", topic: "호텔 · 체크인 · 방 번호와 시각 · 전화 부탁 · 문제 알리기 · 조식과 컨시어지 · 체크아웃",
+        summary: "공항과 카페에서는 주로 대답했지만, 호텔에서는 내가 먼저 부탁하고 문제를 알려요. 부탁은 질문으로(‘Give me towel.’ 대신 ‘Hi, this is room 1207. Could I get some extra towels, please?’), 문제는 사실 + 부탁으로. 2박 3일 = two nights, 1207 = twelve-oh-seven 같은 숫자와 콘센트 · 리모컨 · 서비스 같은 콩글리시, 청구서의 실수를 알리는 말까지 듣고 따라 말하며 익혀요.",
+        length: "6:32", scenes: 12, features: ["음성 해설", "화자별 대화 듣기", "장면별 실습", "호텔 숙박 시뮬레이터", "전화 한 줄", "따라 말하기 28", "듣고 대답 고르기 16", "퀴즈"],
+        thumb: "hotel/docs/poster.jpg"
+      }
+    ]
+  };
+
+  var P = window.Page;
+  var esc = P.esc, lang = P.lang;
+  var $ = function (s, el) { return (el || document).querySelector(s); };
+  var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
+  function abs(u) { return !u ? "" : /^https?:\/\//.test(u) ? u : BASE + String(u).replace(/^\.?\//, ""); }
+
+  /* 영역 이름의 영어 표기. 여기에 없는 새 영역은 사이트의 한국어 이름을 그대로 씁니다. */
+  var TRACK_EN = { toeic: "TOEIC", talk: "Situational English Conversation" };
+
+  var T = {
+    ko: {
+      count: function (n) { return n + "개"; },
+      badge: function (n) { return "튜토리얼 " + n + "개"; },
+      soon: "준비 중",
+      soonText: "곧 열립니다. 이 영역의 튜토리얼은 같은 형식으로 준비하고 있습니다.",
+      meta: function (len, sc) { return "영상 " + len + " · 장면 " + sc + "개"; },
+      open: "인터랙티브로 보기",
+      track: function (k) { return k.title; },
+      chip: function (k) { return k.short || k.title; }
+    },
+    en: {
+      count: function (n) { return String(n); },
+      badge: function (n) { return n + (n === 1 ? " tutorial" : " tutorials"); },
+      soon: "Coming soon",
+      soonText: "Opening soon. Tutorials for this track are being made in the same format.",
+      meta: function (len, sc) { return "Video " + len + " · " + sc + " scenes"; },
+      open: "Open interactive",
+      track: function (k) { return TRACK_EN[k.id] || k.title; },
+      chip: function (k) { return TRACK_EN[k.id] || k.short || k.title; }
+    }
+  };
+  var PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>';
+
+  function card(t) {
+    var s = T[lang()];
+    var url = BASE + t.slug + "/index.html";
+    return '<li class="tut-card">' +
+      '<a class="tut-thumb" href="' + esc(url) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' +
+        (t.thumb ? '<img src="' + esc(abs(t.thumb)) + '" alt="" loading="lazy" width="1280" height="720">' : "") +
+        '<span class="tut-glyph">' + esc(t.title) + "</span>" +
+        '<span class="tut-len">' + esc(t.length) + "</span></a>" +
+      '<div class="tut-body">' +
+        '<p class="tut-topic">' + esc(t.topic) + "</p>" +
+        '<h4><a href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(t.title) + "</a></h4>" +
+        '<p class="tut-sum">' + esc(t.summary) + "</p>" +
+        '<p class="tut-meta">' + esc(s.meta(t.length, t.scenes)) + "</p>" +
+        '<ul class="tut-feats">' + (t.features || []).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
+        '<div class="tut-card-actions">' +
+          '<a class="btn" href="' + esc(url) + '" target="_blank" rel="noopener">' + PLAY + esc(s.open) + " ↗</a>" +
+        "</div>" +
+      "</div></li>";
+  }
+
+  /* 영역 하나 = 제목, 튜토리얼 수, 소개, 카드 묶음. 튜토리얼이 없거나 status가 'soon'이면 '준비 중'. */
+  function track(k, list) {
+    var s = T[lang()];
+    var soon = k.status === "soon" || !list.length;
+    return '<section class="tut-track" id="track-' + esc(k.id) + '" aria-labelledby="th-' + esc(k.id) + '">' +
+      '<header class="tut-track-head">' +
+        '<h3 id="th-' + esc(k.id) + '">' + esc(s.track(k)) + "</h3>" +
+        '<span class="tut-badge' + (soon ? " soon" : "") + '">' + esc(soon ? s.soon : s.badge(list.length)) + "</span>" +
+      "</header>" +
+      (k.summary ? '<p class="tut-track-sum">' + esc(k.summary) + "</p>" : "") +
+      (list.length
+        ? '<ul class="tut-grid is-compact">' + list.map(card).join("") + "</ul>"
+        : '<p class="tut-placeholder">' + esc(s.soonText) + "</p>") +
+      "</section>";
+  }
+
+  function render() {
+    var c = window.EN_CATALOG;
+    var cat = c && c.tracks && c.tracks.length && c.tutorials && c.tutorials.length ? c : FALLBACK;
+    var s = T[lang()];
+    var groups = cat.tracks.map(function (k) {
+      return { k: k, list: cat.tutorials.filter(function (t) { return t.track === k.id; }) };
+    });
+    $("#tut-tracks").innerHTML = groups.map(function (g) { return track(g.k, g.list); }).join("");
+    $("#tut-jump").innerHTML = groups.length > 1 ? groups.map(function (g) {
+      return '<a class="btn ghost" href="#track-' + esc(g.k.id) + '">' + esc(s.chip(g.k)) +
+        '<span class="tut-jump-n">' + esc(g.list.length || s.soon) + "</span></a>";
+    }).join("") : "";
+    $$("#tut-tracks .tut-thumb img").forEach(function (img) {
+      function fail() { img.parentNode.classList.add("no-img"); }
+      if (img.complete && !img.naturalWidth) fail();
+      img.addEventListener("error", fail);
+    });
+    $("#tut-count").textContent = s.count(cat.tutorials.length);
+  }
+  window.ENT = { render: render };
+  P.onLang(render);
+})();

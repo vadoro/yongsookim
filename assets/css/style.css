@@ -71,7 +71,7 @@ a:hover { color: var(--cyan); }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 ::selection { background: var(--cyan); color: var(--bg); }
-h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 p { margin: 0; }
 mark { background: var(--mark); color: inherit; padding: 0 0.1em; border-radius: 3px; }
 [hidden] { display: none !important; }
@@ -631,8 +631,9 @@ a.btn { text-decoration: none; }
 .tut-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
 .tut-card:hover .tut-thumb img { transform: scale(1.03); }
 .tut-glyph {
-  position: absolute; inset: 0; display: none; place-items: center;
+  position: absolute; inset: 0; display: none; place-items: center; padding: 1rem 1.5rem;
   font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; color: var(--ink-2); letter-spacing: -0.02em;
+  line-height: 1.3; text-align: center; text-wrap: balance;
 }
 .tut-thumb.no-img img { display: none; }
 .tut-thumb.no-img .tut-glyph { display: grid; }
@@ -652,6 +653,25 @@ a.btn { text-decoration: none; }
 .tut-feats li { font-size: var(--fs-xs); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: 999px; padding: 0.1em 0.65em; }
 .tut-card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
 .tut-noscript a { color: var(--cyan); }
+
+/* English tutorials page: same cards, grouped by track */
+.tut-features b { font-weight: 600; color: var(--ink); margin-right: 0.5em; }
+.tut-jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
+.tut-jump:empty { display: none; }
+.tut-jump-n { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--cyan); margin-left: 0.15em; }
+.tut-track + .tut-track { margin-top: clamp(2.75rem, 6vw, 4.5rem); }
+.tut-track-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line-2); }
+.tut-track-head h3 { font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.02em; }
+.tut-badge { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--cyan); border: 1px solid var(--line-2); border-radius: 999px; padding: 0.1em 0.65em; }
+.tut-badge.soon { color: var(--amber); }
+.tut-track-sum { max-width: 44em; margin: 0.6rem 0 1.5rem; font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.8; }
+.tut-grid.is-compact { grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
+.tut-grid.is-compact .tut-body { display: flex; flex-direction: column; }
+.tut-grid.is-compact .tut-card-actions { margin-top: auto; padding-top: 0.4rem; }
+.tut-body h4 { font-size: var(--fs-md); font-weight: 600; line-height: 1.35; letter-spacing: -0.02em; }
+.tut-body h4 a { text-decoration: none; }
+.tut-placeholder { color: var(--ink-3); font-size: var(--fs-sm); }
+.tut-note { margin-top: clamp(2rem, 5vw, 3rem); font-size: var(--fs-xs); color: var(--ink-3); }
 
 /* ---------- slides page ---------- */
 .decks { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(2rem, 5vw, 3.5rem); }
@@ -711,9 +731,17 @@ a.btn { text-decoration: none; }
   .facts { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .facts .fact:first-child { grid-column: 1 / -1; }
 }
+@media (max-width: 1100px) {
+  .brand-name em { display: none; }
+}
+/* Narrow screens keep only the page links; if they still overflow, the menu scrolls sideways. */
+@media (max-width: 1000px) {
+  .nav a[data-nav] { display: none; }
+  .nav { min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; padding-block: 4px; }
+  .nav::-webkit-scrollbar { display: none; }
+}
 @media (max-width: 760px) {
   :root { --topbar-h: 52px; }
-  .nav a[data-nav] { display: none; }
   .nav { gap: 0.3rem; }
   .nav a.nav-page { margin-left: 0; font-size: var(--fs-xs); padding: 0.3rem 0.6rem; }
   .topbar-inner { gap: 0.6rem; }
@@ -746,7 +774,6 @@ a.btn { text-decoration: none; }
   .stat:nth-child(2n + 1) { border-left: 0; padding-left: 0; }
   .stat:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .awards { grid-template-columns: minmax(0, 1fr); }
-  .brand-name em { display: none; }
 }
 @media (max-width: 420px) {
   .brand-name { display: none; }
