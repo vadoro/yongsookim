@@ -57,7 +57,8 @@
     var bg = c.bg || "#15171C";
     var vars = ["--d-bg:" + bg, "--d-glow:" + (c.glow || bg), "--d-ink:" + (c.ink || "#EDEAE3"),
       "--d-accent:" + (c.accent || "#6CE0F0"), "--d-muted:" + (c.muted || "#AEB4BF")];
-    if (c.grad && c.grad.length > 1) vars.push("--d-grad:linear-gradient(90deg," + c.grad.join(",") + ")");
+    var grad = c.grad && c.grad.length > 1;
+    if (grad) vars.push("--d-grad:linear-gradient(90deg," + c.grad.join(",") + ")");
     var summary = L(d.summary);
     var coverTitle = c.title || d.title, coverSub = c.sub || d.subtitle;
     var pts = d.points && d.points.items && d.points.items.length ? d.points : null;
@@ -65,7 +66,7 @@
       '<a class="deck-cover' + (c.lines && c.lines.length ? " has-lines" : "") + '" href="' + esc(d.url) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" style="' + esc(vars.join(";")) + '">' +
         (c.lines && c.lines.length ? coverLines(c.lines, bg) : "") +
         '<span class="dc-prompt">' + esc(c.prompt || "") + "</span>" +
-        '<span class="dc-main"><span class="dc-title' + (c.grad ? " is-grad" : "") + '">' + esc(coverTitle) + "</span>" +
+        '<span class="dc-main"><span class="dc-title' + (grad ? " is-grad" : "") + '">' + esc(coverTitle) + "</span>" +
           (coverSub ? '<span class="dc-sub">' + esc(coverSub) + "</span>" : "") + "</span>" +
         '<span class="dc-foot"><span>김용수</span><span>' + esc(when.toUpperCase()) + "</span></span>" +
       "</a>" +
