@@ -16,7 +16,7 @@
 - 한국어/영어 전환, 읽기 진행 표시줄, 현재 섹션 표시, 인쇄용 보기
 - 모든 페이지 오른쪽 아래의 '맨 위로' 단추: 한 화면쯤 내려가면 나타납니다(`assets/js/to-top.js`, 영어 튜토리얼 · DH 튜토리얼 사이트와 같은 동작).
 - 위쪽 메뉴: 화면이 1000px 이하로 좁아지면 첫 화면 섹션 링크를 숨기고 페이지 링크(발표 자료 · DH Tutorials · English Tutorials)만 둡니다. 휴대폰처럼 그래도 넘치면 메뉴를 옆으로 밀어 볼 수 있고, 지금 보는 페이지의 링크가 보이도록 맞춰 둡니다.
-- **발표 자료** (`slides.html`): 강연·발표 슬라이드 목록입니다. 목록은 `assets/js/data.js`의 `slides`에서 그립니다(아래 '발표 자료 추가하기').
+- **발표 자료** (`slides.html`): 강연·발표 슬라이드 목록입니다. 목록은 `assets/js/data.js`의 `slides`에서 그립니다(아래 '발표 자료 추가하기'). 지금은 '영문과 인터랙티브 설명회'(영어영문학과 전공설명회, 날짜 없이 계속 고쳐 쓰는 자료라 맨 위)와 'Vibe Learning' 두 개입니다.
 - **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록(지금은 다섯 편)을 보여 줍니다. 방문자가 튜토리얼 사이트로 오도록 카드에는 '인터랙티브로 보기'만 두고, MP4 내려받기 링크는 넣지 않습니다(카탈로그의 `video` 항목은 쓰지 않음).
 - **English Tutorials** (`english.html`): [영어 튜토리얼](https://engtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. DH Tutorials 페이지와 같은 방식으로 그 사이트의 `assets/catalog.js`를 직접 불러오고, 영역(`tracks`: 토익, 상황별 영어 회화)별로 묶어 보여 줍니다. 새 튜토리얼이나 새 영역이 올라오면 자동으로 나타나고, 불러오지 못하면 `assets/js/english.js`에 적어 둔 목록(지금은 스무 편)을 보여 줍니다. 새 영역의 영어 이름은 `english.js`의 `TRACK_EN`에 적습니다(없으면 한국어 이름).
 
@@ -52,6 +52,14 @@
   cover: { bg: "#15171C", glow: "#2C3A1B", ink: "#EDEAE3", accent: "#C8F169", muted: "#AEB4BF", prompt: "표지 맨 위 한 줄" }
 }
 ```
+
+날짜 없이 계속 고쳐 쓰는 자료(예: 전공설명회)는 `year`·`date` 대신 `ongoing: true`를 적습니다. 날짜 자리에 '계속 업데이트'가 나오고 목록 맨 위에 놓입니다. 아티팩트를 고쳐도 주소는 그대로이므로 링크는 바꿀 필요가 없고, 내용이 크게 바뀌면 카드의 소개(`summary`)·핵심 항목(`points`)·목차(`outline`)·슬라이드 수만 맞춰 주면 됩니다.
+
+선택 항목:
+
+- `points`: 색 막대가 붙은 짧은 핵심 목록. `{ label, items: [{ color, name, tag, note }] }`
+- `cover.title`·`cover.sub`: 표지에만 쓸 제목, `cover.grad: [색1, 색2]`: 표지 제목 그라데이션, `cover.lines: [색, …]`: 표지 오른쪽 위의 색 선(최대 4개)
+- 글자 항목(`kind`, `outline` 한 줄, `points`의 `name`·`tag`·`note`·`label`)은 `"글자"`로도, `{ ko: "…", en: "…" }`로도 적을 수 있습니다.
 
 Claude 아티팩트로 만든 슬라이드는 공유 설정을 **링크가 있는 누구나 볼 수 있게** 해 두어야 방문자가 열 수 있습니다.
 

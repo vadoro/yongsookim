@@ -260,12 +260,54 @@ window.CV = {
    * 연도(year)와 날짜(date, 선택 "YYYY.MM.DD")가 최근인 것부터 보여 줍니다.
    *  url      슬라이드 주소 (Claude 아티팩트라면 "링크가 있는 누구나" 볼 수 있게 공유해 두세요)
    *  kind     발표 성격 (표지 위 작은 글씨)
+   *  ongoing  true면 날짜 대신 '계속 업데이트'라고 적고 목록 맨 위에 둡니다 (날짜 없이 고쳐 쓰는 자료)
    *  slides   슬라이드 수
    *  summary  한두 문장 소개 { ko, en }
+   *  points   (선택) 핵심 항목 { label, items: [{ color, name, tag, note }] } — 색 막대가 붙은 짧은 목록
    *  outline  목차 (섹션 제목)
    *  cover    목록에 그리는 표지 색: bg 배경, glow 배경 빛, ink 글자, accent 강조, muted 보조 글자, prompt 맨 위 한 줄
+   *           (선택) title·sub 표지에만 쓸 제목, grad 제목 그라데이션 [색1, 색2], lines 오른쪽 위 색 선 [색, …] (최대 4개)
+   * 글자 항목(kind, outline 한 줄, points의 name·tag·note, label)은 "글자" 또는 { ko, en } 둘 다 됩니다.
    */
   slides: [
+    {
+      title: "영문과 인터랙티브 설명회",
+      subtitle: "영어로 여는 네 갈래의 미래",
+      kind: "Info Session",
+      ongoing: true,
+      slides: 14,
+      url: "https://claude.ai/artifact/UyRg2A7dZEoq34br8cYPK6",
+      summary: {
+        ko: "영어를 중심에 두고 AI · 비즈니스 · 인문학으로 뻗어 나가는 영어영문학과의 네 트랙을 소개하는 인터랙티브 전공설명회 자료입니다. 재학생 설문을 바탕으로 새로 짠 교과 노선도에서 과목을 눌러 보고, 네 가지 질문으로 나에게 맞는 트랙을 찾은 뒤, 학과가 직접 만든 영어 튜토리얼과 해외 답사 · 교환학생 · 학과 생활까지 둘러봅니다.",
+        en: "An interactive information session for Hallym University’s Department of English Language and Literature. It introduces four tracks that branch out from English toward AI, business and the humanities: a new curriculum route map shaped by student surveys, a four-question track finder, the department’s own English tutorials, field trips, exchange programmes and student life."
+      },
+      points: {
+        label: { ko: "네 트랙", en: "Four tracks" },
+        items: [
+          { color: "#7C9BFF", name: { ko: "융합영어교육전문가", en: "English Education & AI" }, tag: { ko: "영어 × AI", en: "English × AI" },
+            note: { ko: "영어교사 · 영어강사 · 에듀테크 기획자", en: "English teachers, instructors, ed-tech planners" } },
+          { color: "#F2B544", name: { ko: "글로벌비즈니스영어", en: "Global Business English" }, tag: { ko: "영어 × 비즈니스", en: "English × Business" },
+            note: { ko: "글로벌기업 · 마케팅 · 국제기구", en: "Global companies, marketing, international organisations" } },
+          { color: "#FF7D66", name: { ko: "디지털영문콘텐츠", en: "Digital English Content" }, tag: { ko: "영어 × AI × 문학", en: "English × AI × Literature" },
+            note: { ko: "통번역가 · 콘텐츠·미디어 · 디지털마케팅", en: "Translation and interpreting, content and media, digital marketing" } },
+          { color: "#3CC48A", name: { ko: "영미문학·인문교양", en: "Literature & Humanities" }, tag: { ko: "영어 × 인문학", en: "English × Humanities" },
+            note: { ko: "공무원 · 외교 · 공공기관 · 교사", en: "Civil service, diplomacy, public institutions, teaching" } }
+        ]
+      },
+      outline: [
+        { ko: "비전: 영어 × AI · 비즈니스 · 인문학, 네 트랙의 구조", en: "Vision: English × AI, business and the humanities, and the four-track structure" },
+        { ko: "학생의 목소리(재학생 설문)와 새 교과 노선도", en: "Student voices from surveys and the new curriculum route map" },
+        { ko: "트랙 탐색 · 나에게 맞는 트랙 찾기 · 4년 로드맵", en: "Exploring the tracks, a track finder and a four-year roadmap" },
+        { ko: "학과가 만든 영어 튜토리얼 · 해외 답사 · 교환학생", en: "The department’s English tutorials, field trips and exchange programmes" },
+        { ko: "학과 생활과 성과, 상담 안내", en: "Student life, outcomes and where to get advice" }
+      ],
+      cover: {
+        bg: "#0E1016", glow: "#1C2840", ink: "#ECEAE4", accent: "#7FD1C7", muted: "#AEB4BF",
+        prompt: "HALLYM · ENGLISH LANGUAGE & LITERATURE",
+        title: "ENGLISH ×", grad: ["#7FD1C7", "#F2C46D"],
+        lines: ["#7C9BFF", "#F2B544", "#FF7D66", "#3CC48A"]
+      }
+    },
     {
       title: "Vibe Learning",
       subtitle: "AI 활용 교육의 사례와 가능성",

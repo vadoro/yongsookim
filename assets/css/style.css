@@ -714,9 +714,16 @@ a.btn { text-decoration: none; }
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
 }
 .deck-cover:hover { color: var(--d-ink); transform: translateY(-3px); border-color: var(--d-accent); box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5); }
+.deck-cover > span { position: relative; }
+.dc-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.dc-lines path { fill: none; stroke-width: 9; stroke-linecap: round; }
+.dc-lines circle { stroke-width: 5; }
+/* 색 선이 있는 표지는 맨 위 한 줄이 선에 닿지 않게 왼쪽 절반 안에서 줄을 바꿈 */
+.deck-cover.has-lines .dc-prompt { max-width: 72%; white-space: normal; line-height: 1.5; }
 .dc-prompt { font-family: var(--font-mono); font-size: max(10px, 1.6cqw); letter-spacing: 0.1em; color: var(--d-accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .dc-main { display: grid; gap: 1.6cqw; }
 .dc-title { font-weight: 700; font-size: 10.5cqw; line-height: 1; letter-spacing: -0.04em; }
+.dc-title.is-grad { justify-self: start; background: var(--d-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .dc-sub { font-weight: 600; font-size: 3.6cqw; line-height: 1.2; color: var(--d-muted); }
 .dc-foot { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: max(10px, 1.5cqw); color: var(--d-muted); letter-spacing: 0.06em; }
 .deck-body { display: grid; gap: 0.75rem; min-width: 0; }
@@ -725,6 +732,13 @@ a.btn { text-decoration: none; }
 .deck-title a { text-decoration: none; }
 .deck-sub { font-size: var(--fs-md); font-weight: 500; color: var(--ink-2); letter-spacing: -0.01em; }
 .deck-sum { color: var(--ink-2); line-height: 1.8; }
+.deck-points { border-top: 1px solid var(--line-2); padding-top: 0.75rem; margin-top: 0.25rem; }
+.deck-points .label { margin-bottom: 0.5rem; }
+.deck-points ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: 0.5rem 1rem; }
+.deck-points li { display: grid; align-content: start; gap: 0.1rem; border-left: 3px solid var(--p); padding: 0.15rem 0 0.15rem 0.7rem; }
+.dp-name { font-weight: 600; font-size: var(--fs-sm); line-height: 1.4; }
+.dp-tag { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--p); }
+.dp-note { font-size: var(--fs-xs); color: var(--ink-2); line-height: 1.5; }
 .deck-outline { border-top: 1px solid var(--line-2); padding-top: 0.75rem; margin-top: 0.25rem; }
 .deck-outline .label { margin-bottom: 0.4rem; }
 .deck-outline ol { margin: 0; padding: 0; list-style: none; counter-reset: part; display: grid; gap: 0.35rem; }
@@ -813,6 +827,7 @@ a.btn { text-decoration: none; }
   .tab-panel[hidden] { display: block !important; }
   .lec[hidden], .year-group[hidden] { display: grid !important; }
   .pub, .lec, .conf, .chrono-row, .award { break-inside: avoid; }
+  .dc-title.is-grad { background: none; color: inherit; }
   .year-label-inner { position: static; }
   .about-grid { display: block; }
   .chrono-bar.is-current, .kdot, .key-now { box-shadow: none; }
