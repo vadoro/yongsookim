@@ -260,7 +260,7 @@ window.CV = {
    * 연도(year)와 날짜(date, 선택 "YYYY.MM.DD")가 최근인 것부터 보여 줍니다.
    *  url      슬라이드 주소 (Claude 아티팩트라면 "링크가 있는 누구나" 볼 수 있게 공유해 두세요)
    *  kind     발표 성격 (표지 위 작은 글씨)
-   *  ongoing  true면 날짜 대신 '계속 업데이트'라고 적고 목록 맨 위에 둡니다 (날짜 없이 고쳐 쓰는 자료)
+   *  ongoing  true면 날짜 대신 '계속 업데이트'라고 적고, 날짜가 있는 자료들 아래에 둡니다 (날짜 없이 고쳐 쓰는 자료)
    *  slides   슬라이드 수
    *  summary  한두 문장 소개 { ko, en }
    *  points   (선택) 핵심 항목 { label, items: [{ color, name, tag, note }] } — 색 막대가 붙은 짧은 목록
@@ -271,7 +271,27 @@ window.CV = {
    */
   slides: [
     {
-      title: "영문과 인터랙티브 설명회",
+      title: "Vibe Learning",
+      subtitle: "AI 활용 교육의 사례와 가능성",
+      kind: "Faculty Talk",
+      year: 2026,
+      date: "2026.10.27",
+      slides: 34,
+      url: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG",
+      summary: {
+        ko: "AI를 수업 한가운데에 넣고 실험한 두 과목의 사례를 나눕니다. ‘디지털인문예술입문’의 Scaling Up과 ‘디지털 시대의 영어영문학’의 Reverse Learning, 두 가지 전략을 소개합니다.",
+        en: "Case studies from two courses that put AI at the centre of the classroom, and the two strategies drawn from them: Scaling Up and Reverse Learning."
+      },
+      outline: [
+        "딸깍 시대의 문제 제기와 Vibe Learning의 정의",
+        "Scaling Up: 디지털인문예술입문 사례",
+        "Reverse Learning: 디지털 시대의 영어영문학 사례",
+        "두 전략의 정리와 가능성"
+      ],
+      cover: { bg: "#15171C", glow: "#2C3A1B", ink: "#EDEAE3", accent: "#C8F169", muted: "#AEB4BF", prompt: "> prompt: \"대 ‘딸깍’ 시대, 어떻게 가르칠 것인가?\"" }
+    },
+    {
+      title: "한림대 영어영문학과 전공설명회",
       subtitle: "영어로 여는 네 갈래의 미래",
       kind: "Info Session",
       ongoing: true,
@@ -307,26 +327,6 @@ window.CV = {
         title: "ENGLISH ×", grad: ["#7FD1C7", "#F2C46D"],
         lines: ["#7C9BFF", "#F2B544", "#FF7D66", "#3CC48A"]
       }
-    },
-    {
-      title: "Vibe Learning",
-      subtitle: "AI 활용 교육의 사례와 가능성",
-      kind: "Faculty Talk",
-      year: 2026,
-      date: "2026.10.27",
-      slides: 34,
-      url: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG",
-      summary: {
-        ko: "AI를 수업 한가운데에 넣고 실험한 두 과목의 사례를 나눕니다. ‘디지털인문예술입문’의 Scaling Up과 ‘디지털 시대의 영어영문학’의 Reverse Learning, 두 가지 전략을 소개합니다.",
-        en: "Case studies from two courses that put AI at the centre of the classroom, and the two strategies drawn from them: Scaling Up and Reverse Learning."
-      },
-      outline: [
-        "딸깍 시대의 문제 제기와 Vibe Learning의 정의",
-        "Scaling Up: 디지털인문예술입문 사례",
-        "Reverse Learning: 디지털 시대의 영어영문학 사례",
-        "두 전략의 정리와 가능성"
-      ],
-      cover: { bg: "#15171C", glow: "#2C3A1B", ink: "#EDEAE3", accent: "#C8F169", muted: "#AEB4BF", prompt: "> prompt: \"대 ‘딸깍’ 시대, 어떻게 가르칠 것인가?\"" }
     }
   ]
 };

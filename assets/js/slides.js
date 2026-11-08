@@ -1,5 +1,5 @@
 /* 발표 자료 페이지: assets/js/data.js 의 CV.slides 를 그립니다.
- * 날짜 없이 계속 고쳐 쓰는 자료(ongoing: true)를 맨 위에, 나머지는 최근 순으로 놓습니다. */
+ * 날짜가 있는 자료를 최근 순으로 놓고, 날짜 없이 계속 고쳐 쓰는 자료(ongoing: true)는 그 아래에 둡니다. */
 (function () {
   "use strict";
 
@@ -95,7 +95,7 @@
     var list = (CV.slides || []).map(function (d, i) { return { d: d, i: i }; })
       .sort(function (a, b) {
         var oa = a.d.ongoing ? 1 : 0, ob = b.d.ongoing ? 1 : 0;
-        if (oa !== ob) return ob - oa;
+        if (oa !== ob) return oa - ob;
         var ka = sortKey(a.d), kb = sortKey(b.d);
         return kb > ka ? 1 : kb < ka ? -1 : a.i - b.i;
       })
