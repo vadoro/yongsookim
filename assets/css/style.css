@@ -739,6 +739,12 @@ a.btn { text-decoration: none; }
 .dp-name { font-weight: 600; font-size: var(--fs-sm); line-height: 1.4; }
 .dp-tag { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--p); }
 .dp-note { font-size: var(--fs-xs); color: var(--ink-2); line-height: 1.5; }
+.deck-talks { border-top: 1px solid var(--line-2); padding-top: 0.75rem; margin-top: 0.25rem; }
+.deck-talks .label { margin-bottom: 0.4rem; }
+.deck-talks ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; }
+.deck-talks li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.5rem; font-size: var(--fs-sm); line-height: 1.6; }
+.dt-date { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-3); padding-top: 0.15em; }
+.dt-where { color: var(--ink-2); }
 .deck-outline { border-top: 1px solid var(--line-2); padding-top: 0.75rem; margin-top: 0.25rem; }
 .deck-outline .label { margin-bottom: 0.4rem; }
 .deck-outline ol { margin: 0; padding: 0; list-style: none; counter-reset: part; display: grid; gap: 0.35rem; }

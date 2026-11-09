@@ -159,6 +159,7 @@ window.CV = {
   /* type: keynote(기조 강연) | talk(주제 발표·발표) | lecture(특강·강연·초청 강연)
      slides: 발표 슬라이드 주소가 있으면 적으세요. 항목 옆에 '슬라이드' 링크가 생깁니다. */
   lectures: [
+    { year: 2026, date: "2026.11.09", type: "talk", label: "발표", title: "Vibe Learning: AI 활용 교육의 사례와 가능성", where: "성균관대학교 디지털한국철학연구실, 디지털 한국철학 AX 교육 한마당, 성균관대학교 경영관(화상)", slides: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG" },
     { year: 2026, date: "2026.10.27", type: "talk", label: "발표", title: "Vibe Learning: AI 활용 교육의 사례와 가능성", where: "한림대학교 인문학연구소, 제174회 학술집담회, 소울로스터리", slides: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG" },
     { year: 2026, date: "2026.05.30", type: "keynote", label: "기조 강연", title: "비평이론 30년과 그 너머", where: "한국비평이론학회 2026년 봄 학술대회, “동시대 비평이론의 지형과 새로운 비평의 가능성,” 충북대학교" },
     { year: 2025, date: "2025.11.06", type: "lecture", label: "특강", title: "공기어 연결망을 통한 서사 분석", where: "경북대학교 영어영문학과" },
@@ -258,6 +259,8 @@ window.CV = {
   /*
    * 발표 자료(slides.html)에 보이는 목록. 새 자료는 이 배열에 항목 하나를 추가하세요.
    * 연도(year)와 날짜(date, 선택 "YYYY.MM.DD")가 최근인 것부터 보여 줍니다.
+   * 위 lectures 에 같은 슬라이드 주소(slides)로 적은 발표가 있으면, 카드에 그 날짜·장소를 '발표한 자리'로 모아 보여 주고
+   * 가장 최근 발표 날짜를 이 자료의 날짜로 씁니다 (같은 자료로 다시 발표하면 lectures 에 한 줄만 추가하면 됩니다).
    *  url      슬라이드 주소 (Claude 아티팩트라면 "링크가 있는 누구나" 볼 수 있게 공유해 두세요)
    *  kind     발표 성격 (표지 위 작은 글씨)
    *  ongoing  true면 날짜 대신 '계속 업데이트'라고 적고, 날짜가 있는 자료들 아래에 둡니다 (날짜 없이 고쳐 쓰는 자료)
@@ -275,7 +278,6 @@ window.CV = {
       subtitle: "AI 활용 교육의 사례와 가능성",
       kind: "Faculty Talk",
       year: 2026,
-      date: "2026.10.27",
       slides: 34,
       url: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG",
       summary: {

@@ -13,6 +13,7 @@
       slides: function (n) { return "슬라이드 " + n + "장"; },
       ongoing: "계속 업데이트",
       outline: "목차",
+      talks: "발표한 자리",
       open: "슬라이드 보기",
       empty: "아직 올린 자료가 없습니다."
     },
@@ -21,6 +22,7 @@
       slides: function (n) { return n + " slides"; },
       ongoing: "Updated regularly",
       outline: "Outline",
+      talks: "Presented at",
       open: "Open slides",
       empty: "No decks yet."
     }
@@ -34,6 +36,17 @@
   }
 
   function sortKey(d) { return String(d.year || "") + "." + String(d.date || "").replace(/[^0-9.]/g, ""); }
+
+  /* 이 자료로 한 발표: lectures 에서 슬라이드 주소가 같은 항목, 최근 순 */
+  function talksOf(d) {
+    return (CV.lectures || []).filter(function (l) { return d.url && l.slides === d.url; })
+      .sort(function (a, b) { var ka = sortKey(a), kb = sortKey(b); return kb > ka ? 1 : kb < ka ? -1 : 0; });
+  }
+  /* 카드에 쓰는 날짜: 발표가 있으면 가장 최근 발표, 없으면 자료에 적은 날짜 */
+  function latest(d) {
+    var t = talksOf(d)[0];
+    return t ? { year: t.year, date: t.date } : d;
+  }
 
   /* 표지 오른쪽 위의 색 선(트랙 노선) — cover.lines 에 색을 적은 만큼 그립니다(최대 4개). */
   var LINES = [
@@ -53,7 +66,8 @@
 
   function card(d) {
     var s = T[P.lang()], c = d.cover || {};
-    var when = [L(d.kind), d.ongoing ? s.ongoing : (d.date || d.year)].filter(Boolean).join(" · ");
+    var talks = talksOf(d), last = latest(d);
+    var when = [L(d.kind), d.ongoing ? s.ongoing : (last.date || last.year)].filter(Boolean).join(" · ");
     var bg = c.bg || "#15171C";
     var vars = ["--d-bg:" + bg, "--d-glow:" + (c.glow || bg), "--d-ink:" + (c.ink || "#EDEAE3"),
       "--d-accent:" + (c.accent || "#6CE0F0"), "--d-muted:" + (c.muted || "#AEB4BF")];
@@ -82,6 +96,10 @@
               (p.tag ? '<span class="dp-tag">' + esc(L(p.tag)) + "</span>" : "") +
               (p.note ? '<span class="dp-note">' + esc(L(p.note)) + "</span>" : "") + "</li>";
           }).join("") + "</ul></div>" : "") +
+        (talks.length ? '<div class="deck-talks"><p class="label">' + esc(s.talks) + "</p><ul>" +
+          talks.map(function (l) {
+            return '<li><span class="dt-date">' + esc(l.date) + '</span><span class="dt-where">' + esc(l.where) + "</span></li>";
+          }).join("") + "</ul></div>" : "") +
         (d.outline && d.outline.length ? '<div class="deck-outline"><p class="label">' + esc(s.outline) + "</p><ol>" +
           d.outline.map(function (o) { return "<li>" + esc(L(o)) + "</li>"; }).join("") + "</ol></div>" : "") +
         '<div class="deck-actions">' +
@@ -96,7 +114,7 @@
       .sort(function (a, b) {
         var oa = a.d.ongoing ? 1 : 0, ob = b.d.ongoing ? 1 : 0;
         if (oa !== ob) return oa - ob;
-        var ka = sortKey(a.d), kb = sortKey(b.d);
+        var ka = sortKey(latest(a.d)), kb = sortKey(latest(b.d));
         return kb > ka ? 1 : kb < ka ? -1 : a.i - b.i;
       })
       .map(function (x) { return x.d; });
