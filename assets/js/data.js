@@ -276,7 +276,7 @@ window.CV = {
     {
       title: "Vibe Learning",
       subtitle: "AI 활용 교육의 사례와 가능성",
-      kind: "Faculty Talk",
+      kind: "Talk",
       year: 2026,
       slides: 34,
       url: "https://claude.ai/artifact/QYoWaZXBh2qyCaEYNg3qnG",
