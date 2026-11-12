@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>영어영문학과 · 김용수 Yongsoo Kim</title>
+  <meta name="description" content="한림대학교 영어영문학과: 영어를 중심으로 AI · 비즈니스 · 인문학으로 뻗어 나가는 네 트랙과 4년 로드맵, 영어 튜토리얼 · 해외 답사 · 교환학생 · 학과 생활.">
+  <meta name="author" content="김용수 Yongsoo Kim">
+  <meta property="og:title" content="영어영문학과 · 김용수 Yongsoo Kim">
+  <meta property="og:description" content="Hallym University’s Department of English Language and Literature: four tracks that branch out from English toward AI, business and the humanities.">
+  <meta name="theme-color" content="#0A0F1E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0F1E'/%3E%3Cg stroke='%236CE0F0' stroke-width='1.4' opacity='.7'%3E%3Cpath d='M9 22L16 9L24 19L9 22'/%3E%3C/g%3E%3Ccircle cx='16' cy='9' r='3.4' fill='%236CE0F0'/%3E%3Ccircle cx='9' cy='22' r='2.6' fill='%23F2B54A'/%3E%3Ccircle cx='24' cy='19' r='2.8' fill='%238264c8'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400;1,6..72,500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add("js");
+      try {
+        var l = localStorage.getItem("cv-lang");
+        if (l === "ko" || l === "en") d.setAttribute("lang", l);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner wrap">
+    <a class="brand" href="index.html" aria-label="김용수 홈">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><g stroke="currentColor" stroke-width="1.4" opacity=".6"><path d="M9 22L16 9L24 19L9 22"/></g><circle cx="16" cy="9" r="3.4" fill="var(--cyan)"/><circle cx="9" cy="22" r="2.6" fill="var(--amber)"/><circle cx="24" cy="19" r="2.8" fill="var(--t-theory)"/></svg>
+      <span class="brand-name">김용수 <em>Yongsoo Kim</em></span>
+    </a>
+    <nav class="nav" aria-label="섹션">
+      <a href="index.html#about" data-nav="about"><span data-lang="ko">소개</span><span data-lang="en">About</span></a>
+      <a href="index.html#timeline" data-nav="timeline"><span data-lang="ko">연보</span><span data-lang="en">Timeline</span></a>
+      <a href="index.html#works" data-nav="works"><span data-lang="ko">연구</span><span data-lang="en">Works</span></a>
+      <a href="index.html#talks" data-nav="talks"><span data-lang="ko">강연·발표</span><span data-lang="en">Talks</span></a>
+      <a href="index.html#awards" data-nav="awards"><span data-lang="ko">수상</span><span data-lang="en">Awards</span></a>
+      <a href="slides.html" class="nav-page"><span data-lang="ko">발표 자료</span><span data-lang="en">Slides</span></a>
+      <a href="tutorials.html" class="nav-page">DH Tutorials</a>
+      <a href="english.html" class="nav-page">English Tutorials</a>
+      <a href="dell.html" class="nav-page is-active" aria-current="page"><span data-lang="ko">영어영문학과</span><span data-lang="en">English Dept.</span></a>
+      <a href="dah.html" class="nav-page"><span data-lang="ko">디지털인문예술전공</span><span data-lang="en">DAH Major</span></a>
+    </nav>
+    <div class="seg" role="group" aria-label="언어 Language">
+      <button type="button" id="lang-ko" data-set-lang="ko" aria-pressed="true">KO</button>
+      <button type="button" id="lang-en" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="tut-hero wrap" aria-labelledby="dell-title">
+    <div class="tut-hero-text">
+      <p class="kicker"><i class="kdot"></i>English Language &amp; Literature</p>
+      <h1 id="dell-title" class="tut-title">영어영문학과 <em>English Language &amp; Literature</em></h1>
+      <p class="hero-tagline" data-lang="ko">영어로 여는 네 갈래의 미래</p>
+      <p class="hero-tagline" data-lang="en">Four futures that start with English</p>
+      <p class="tut-lead" data-lang="ko">영어는 21세기 글로벌 문화의 핵심 역량입니다. AI와 대화하는 언어, 세계 시장이 일하는 언어, 콘텐츠와 문화가 흐르는 언어. 한림대학교 영어영문학과는 영어를 중심에 두고 AI · 비즈니스 · 인문학으로 뻗어 나가는 네 트랙을 운영합니다.</p>
+      <p class="tut-lead" data-lang="en">English is a core skill of 21st-century global culture: the language we use with AI, the language global markets work in, the language content and culture flow through. Hallym University’s Department of English Language and Literature keeps English at the centre and runs four tracks that branch out toward AI, business and the humanities.</p>
+      <div class="tut-actions">
+        <a class="btn big" href="https://dell.hallym.ac.kr/dell/index.do" target="_blank" rel="noopener"><span data-lang="ko">학과 홈페이지 열기</span><span data-lang="en">Open the department website</span> ↗</a>
+        <a class="btn" href="https://claude.ai/artifact/UyRg2A7dZEoq34br8cYPK6" target="_blank" rel="noopener"><span data-lang="ko">전공설명회 자료</span><span data-lang="en">Info session slides</span> ↗</a>
+      </div>
+      <p class="tut-url mono">dell.hallym.ac.kr · <span data-lang="ko">행정실</span><span data-lang="en">Office</span> 033-248-1530</p>
+    </div>
+    <div class="hero-side">
+      <p class="label" id="dell-rec"><span data-lang="ko">학과와 함께한 기록</span><span data-lang="en">With the department</span></p>
+      <ul class="tut-features" aria-labelledby="dell-rec">
+        <li><span class="tf-k">2004–</span><span data-lang="ko"><b>교수</b> 한림대학교 영어영문학과</span><span data-lang="en"><b>Professor</b> Department of English Language and Literature, Hallym University</span></li>
+        <li><span class="tf-k">2016–18</span><span data-lang="ko"><b>학과장</b> 영어영문학과장</span><span data-lang="en"><b>Chair</b> of the department</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap" id="tracks" aria-labelledby="tracks-title">
+    <header class="sec-head">
+      <p class="kicker"><i class="kdot"></i>Tracks</p>
+      <h2 id="tracks-title"><span data-lang="ko">네 트랙</span><span data-lang="en">Four tracks</span> <em>4</em></h2>
+    </header>
+    <p class="sec-deck"><span data-lang="ko">네 트랙은 모두 영어를 공통 기반으로 삼고, 1–2학년 영어 코어에서 출발합니다.</span><span data-lang="en">All four tracks share English as their common base and start from the English core courses in the first two years.</span></p>
+    <ol class="trk-grid is-2">
+      <li class="trk-card" style="--k:#7C9BFF">
+        <p class="trk-n">TRACK 1 · <span data-lang="ko">영어 × AI</span><span data-lang="en">English × AI</span></p>
+        <h3>융합영어교육전문가 <em>English Education &amp; AI</em></h3>
+        <p data-lang="ko">생성형 AI와 에듀테크로 영어를 가르치고, 교육 콘텐츠를 설계하는 전문가를 기릅니다.</p>
+        <p data-lang="en">Teaching English with generative AI and ed-tech, and designing educational content.</p>
+        <dl class="trk-meta">
+          <div><dt><span data-lang="ko">모듈</span><span data-lang="en">Modules</span></dt><dd><span data-lang="ko">영어교육과 AI · AI콘텐츠크리에이터</span><span data-lang="en">English Education and AI · AI Content Creator</span></dd></div>
+          <div><dt><span data-lang="ko">진로</span><span data-lang="en">Careers</span></dt><dd><span data-lang="ko">영어교사 · 영어강사 · 에듀테크 기획자</span><span data-lang="en">English teachers, instructors, ed-tech planners</span></dd></div>
+        </dl>
+      </li>
+      <li class="trk-card" style="--k:#F2B544">
+        <p class="trk-n">TRACK 2 · <span data-lang="ko">영어 × 비즈니스</span><span data-lang="en">English × Business</span></p>
+        <h3>글로벌비즈니스영어 <em>Global Business English</em></h3>
+        <p data-lang="ko">마케팅 · 무역 · 관광 · IT 현장의 영어로 세계 시장과 소통하고, K-콘텐츠를 세계에 전합니다.</p>
+        <p data-lang="en">Working with global markets in the English of marketing, trade, tourism and IT, and taking K-content to the world.</p>
+        <dl class="trk-meta">
+          <div><dt><span data-lang="ko">모듈</span><span data-lang="en">Modules</span></dt><dd><span data-lang="ko">글로벌비즈니스영어 · 글로벌 K 콘텐츠</span><span data-lang="en">Global Business English · Global K-Content</span></dd></div>
+          <div><dt><span data-lang="ko">진로</span><span data-lang="en">Careers</span></dt><dd><span data-lang="ko">글로벌기업 · 마케팅 · 국제기구</span><span data-lang="en">Global companies, marketing, international organisations</span></dd></div>
+        </dl>
+      </li>
+      <li class="trk-card" style="--k:#FF7D66">
+        <p class="trk-n">TRACK 3 · <span data-lang="ko">영어 × AI × 문학</span><span data-lang="en">English × AI × Literature</span></p>
+        <h3>디지털영문콘텐츠 <em>Digital English Content</em></h3>
+        <p data-lang="ko">영어권 영상 · 드라마 · 대중문화를 분석하고, 영어로 콘텐츠를 기획하고 창작합니다.</p>
+        <p data-lang="en">Analysing English-language film, drama and popular culture, and planning and creating content in English.</p>
+        <dl class="trk-meta">
+          <div><dt><span data-lang="ko">모듈</span><span data-lang="en">Modules</span></dt><dd><span data-lang="ko">영어권 영상 · 콘텐츠 제작 · 영어권 미디어 · 문화 분석</span><span data-lang="en">English-language video and content production · English-language media and culture analysis</span></dd></div>
+          <div><dt><span data-lang="ko">진로</span><span data-lang="en">Careers</span></dt><dd><span data-lang="ko">통번역가 · 콘텐츠 · 미디어 · 디지털마케팅</span><span data-lang="en">Translation and interpreting, content and media, digital marketing</span></dd></div>
+        </dl>
+      </li>
+      <li class="trk-card" style="--k:#3CC48A">
+        <p class="trk-n">TRACK 4 · <span data-lang="ko">영어 × 인문학</span><span data-lang="en">English × Humanities</span></p>
+        <h3>영미문학·인문교양 <em>Literature &amp; Humanities</em></h3>
+        <p data-lang="ko">영미문학의 정전을 깊이 읽고, 문학으로 정의 · 젠더 · 기술 같은 사회적 질문을 사유합니다.</p>
+        <p data-lang="en">Reading the canon of literature in English closely, and thinking through social questions such as justice, gender and technology with literature.</p>
+        <dl class="trk-meta">
+          <div><dt><span data-lang="ko">모듈</span><span data-lang="en">Modules</span></dt><dd><span data-lang="ko">영미권 문학 · 사회적 아젠다</span><span data-lang="en">Literature in English · Social agendas</span></dd></div>
+          <div><dt><span data-lang="ko">진로</span><span data-lang="en">Careers</span></dt><dd><span data-lang="ko">공무원 · 외교 · 공공기관 · 교사</span><span data-lang="en">Civil service, diplomacy, public institutions, teaching</span></dd></div>
+        </dl>
+      </li>
+    </ol>
+    <p class="sec-note"><span data-lang="ko">트랙 이수: 모듈(3과목 이상, 9–12학점) 2개 이상, 18학점 이상. 트랙 이수는 졸업요건이 아닌 자율 선택입니다. 과목별 설명과 교과 노선도, 나에게 맞는 트랙 찾기는 <a href="https://claude.ai/artifact/UyRg2A7dZEoq34br8cYPK6" target="_blank" rel="noopener">전공설명회 자료 ↗</a>에서 볼 수 있습니다.</span><span data-lang="en">Completing a track: two or more modules (each three or more courses, 9–12 credits), 18 credits or more. Tracks are optional, not a graduation requirement. Course descriptions, the curriculum route map and a track finder are in the <a href="https://claude.ai/artifact/UyRg2A7dZEoq34br8cYPK6" target="_blank" rel="noopener">info session slides ↗</a>.</span></p>
+  </section>
+
+  <section class="section wrap" id="roadmap" aria-labelledby="roadmap-title">
+    <header class="sec-head">
+      <p class="kicker"><i class="kdot"></i>Roadmap</p>
+      <h2 id="roadmap-title"><span data-lang="ko">4년 로드맵</span><span data-lang="en">Four-year roadmap</span></h2>
+    </header>
+    <ol class="steps">
+      <li><span class="st-y"><span data-lang="ko">1학년</span><span data-lang="en">Year 1</span></span><span class="st-s"><span data-lang="ko">탐색</span><span data-lang="en">Explore</span></span><p data-lang="ko">영어 코어로 기초를 다지고, 맛보기 과목으로 트랙을 미리 타 봅니다.</p><p data-lang="en">Build the basics in the English core courses and try the tracks through taster courses.</p></li>
+      <li><span class="st-y"><span data-lang="ko">2학년</span><span data-lang="en">Year 2</span></span><span class="st-s"><span data-lang="ko">선택</span><span data-lang="en">Choose</span></span><p data-lang="ko">영어 코어를 완성하고 나의 노선을 고릅니다.</p><p data-lang="en">Complete the English core and choose your line.</p></li>
+      <li><span class="st-y"><span data-lang="ko">3학년</span><span data-lang="en">Year 3</span></span><span class="st-s"><span data-lang="ko">심화</span><span data-lang="en">Deepen</span></span><p data-lang="ko">트랙의 첫 번째 모듈을 깊이 있게 이수합니다.</p><p data-lang="en">Take the first module of your track in depth.</p></li>
+      <li><span class="st-y"><span data-lang="ko">4학년</span><span data-lang="en">Year 4</span></span><span class="st-s"><span data-lang="ko">도약</span><span data-lang="en">Launch</span></span><p data-lang="ko">두 번째 모듈까지 마쳐 트랙을 이수하고, 종착역으로 출발합니다.</p><p data-lang="en">Finish the second module to complete the track, and set off for your destination.</p></li>
+    </ol>
+  </section>
+
+  <section class="section wrap" id="programs" aria-labelledby="programs-title">
+    <header class="sec-head">
+      <p class="kicker"><i class="kdot"></i>Beyond the Classroom</p>
+      <h2 id="programs-title"><span data-lang="ko">배움의 현장</span><span data-lang="en">Beyond the classroom</span></h2>
+    </header>
+    <ul class="trk-grid is-2">
+      <li class="trk-card" style="--k:#6CE0F0">
+        <p class="trk-n">English Tutorials</p>
+        <h3><span data-lang="ko">영어 튜토리얼</span><span data-lang="en">English tutorials</span></h3>
+        <p data-lang="ko">영어영문학과가 AI를 활용해 직접 만든 학습 플랫폼입니다. 토익 문법 · 듣기 · 독해와 상황별 회화를 ‘감’이 아니라 ‘원리’로 익히고, 수업에서도 혼자서도 쓸 수 있습니다.</p>
+        <p data-lang="en">A learning platform the department built itself with AI. Students learn TOEIC grammar, listening and reading and everyday conversation from the underlying rules rather than by feel, in class or on their own.</p>
+        <p><a href="english.html"><span data-lang="ko">튜토리얼 목록 보기 →</span><span data-lang="en">See the tutorials →</span></a></p>
+      </li>
+      <li class="trk-card" style="--k:#7FD1C7">
+        <p class="trk-n">Field Trips · L-HUSS</p>
+        <h3><span data-lang="ko">해외 답사</span><span data-lang="en">Field trips</span></h3>
+        <p data-lang="ko">방학에는 L-HUSS 인문사회 융합인재양성사업의 지원으로 영어가 쓰이는 현장에 나갑니다. 2025년에는 싱가포르에서 National University of Singapore 학생들과 교류했고, 2026년에는 우즈베키스탄 · 카자흐스탄의 실크로드를 따라 걸었습니다.</p>
+        <p data-lang="en">In the vacations, with support from the L-HUSS programme, students go where English is used: in 2025 they met students of the National University of Singapore, and in 2026 they followed the Silk Road through Uzbekistan and Kazakhstan.</p>
+      </li>
+      <li class="trk-card" style="--k:#F2C46D">
+        <p class="trk-n">Study Abroad</p>
+        <h3><span data-lang="ko">교환학생</span><span data-lang="en">Exchange</span></h3>
+        <p data-lang="ko">영어권은 물론 영어로 수업을 듣는 유럽 · 아시아 · 중남미 대학까지, 한림대 교환학생 프로그램으로 2학년부터 지원할 수 있습니다. 1~2개 학기 동안 파견 대학에서 들은 학점은 본교 정규 학점으로 인정됩니다.</p>
+        <p data-lang="en">Through Hallym’s exchange programme, students can apply from their second year to universities in English-speaking countries and to universities in Europe, Asia and Latin America that teach in English. Credits from one or two semesters abroad count toward their degree.</p>
+      </li>
+      <li class="trk-card" style="--k:#B9CC97">
+        <p class="trk-n">Campus Life</p>
+        <h3><span data-lang="ko">학과 생활</span><span data-lang="en">Student life</span></h3>
+        <p data-lang="ko">3월 신입생 OT, 4–5월 연합 MT, 학기 중 동문특강, 11월 학술제(영어 뮤지컬 · AI 활용 공모전 · 영어 팝송 경연), 12월 영문인의 날로 한 해가 이어집니다. 동아리로는 DELL 종합 운동, 학업 동아리 Insight, 노래 · 영어연극 동아리 Duddenly가 있습니다.</p>
+        <p data-lang="en">The year runs from the freshman orientation in March and the joint retreat in spring, through alumni talks during term and the November festival (an English musical, an AI contest and a pop song contest), to the department day in December. Clubs include DELL (sports), Insight (study) and Duddenly (singing and English theatre).</p>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <p class="footer-line"><span data-lang="ko">김용수의 연구와 교육을 하나의 연결망으로 엮은 온라인 공간입니다.</span><span data-lang="en">An online space where Yongsoo Kim’s research and teaching are woven into one network.</span></p>
+  <div class="footer-foot">
+    <span>© <span id="year-now">2026</span> 김용수 Yongsoo Kim · <span data-lang="ko">한림대학교</span><span data-lang="en">Hallym University</span></span>
+    <span class="footer-actions">
+      <a class="text-btn" href="index.html"><span data-lang="ko">← 첫 화면</span><span data-lang="en">← Home</span></a>
+      <a class="text-btn" href="#top"><span data-lang="ko">맨 위로 ↑</span><span data-lang="en">Back to top ↑</span></a>
+    </span>
+  </div>
+</footer>
+
+<script src="assets/js/page.js"></script>
+<script src="assets/js/to-top.js"></script>
+</body>
+</html>
