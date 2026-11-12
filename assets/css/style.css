@@ -690,6 +690,14 @@ a.btn { text-decoration: none; }
 .tut-placeholder { color: var(--ink-3); font-size: var(--fs-sm); }
 .tut-note { margin-top: clamp(2rem, 5vw, 3rem); font-size: var(--fs-xs); color: var(--ink-3); }
 
+/* DAH major page: link hero with a short list of records */
+/* 띄어쓰기 없는 아홉 글자 제목이 320px 화면에서도 한 줄에 들어가도록 최소 크기만 낮춥니다. */
+.dah-title { font-size: clamp(1.75rem, 7vw, 5rem); }
+.dah-side { min-width: 0; }
+.dah-side > .label { display: block; margin-bottom: 0.6rem; }
+.dah-side .tf-k { flex: none; min-width: 3.2rem; }
+.dah-side li { line-height: 1.6; }
+
 /* ---------- slides page ---------- */
 .decks { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(2rem, 5vw, 3.5rem); }
 .deck {

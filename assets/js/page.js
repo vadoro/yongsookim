@@ -1,4 +1,4 @@
-/* 하위 페이지(발표 자료, DH Tutorials, English Tutorials)가 함께 쓰는 공통 동작:
+/* 하위 페이지(발표 자료, DH Tutorials, English Tutorials, DAH 전공)가 함께 쓰는 공통 동작:
  * 언어 전환, 별 배경, 읽기 진행 표시줄, 연도 표시, 좁은 화면의 메뉴 위치.
  * 페이지 스크립트는 Page.onLang(render)로 그리기 함수를 등록합니다. */
 (function () {

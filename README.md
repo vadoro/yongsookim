@@ -15,10 +15,11 @@
 - **강연·발표**: 초청 강연(유형별 필터, 접기)과 학술 발표를 탭으로 나눴습니다
 - 한국어/영어 전환, 읽기 진행 표시줄, 현재 섹션 표시, 인쇄용 보기
 - 모든 페이지 오른쪽 아래의 '맨 위로' 단추: 한 화면쯤 내려가면 나타납니다(`assets/js/to-top.js`, 영어 튜토리얼 · DH 튜토리얼 사이트와 같은 동작).
-- 위쪽 메뉴: 화면이 1000px 이하로 좁아지면 첫 화면 섹션 링크를 숨기고 페이지 링크(발표 자료 · DH Tutorials · English Tutorials)만 둡니다. 휴대폰처럼 그래도 넘치면 메뉴를 옆으로 밀어 볼 수 있고, 지금 보는 페이지의 링크가 보이도록 맞춰 둡니다.
+- 위쪽 메뉴: 화면이 1000px 이하로 좁아지면 첫 화면 섹션 링크를 숨기고 페이지 링크(발표 자료 · DH Tutorials · English Tutorials · DAH 전공)만 둡니다. 휴대폰처럼 그래도 넘치면 메뉴를 옆으로 밀어 볼 수 있고, 지금 보는 페이지의 링크가 보이도록 맞춰 둡니다.
 - **발표 자료** (`slides.html`): 강연·발표 슬라이드 목록입니다. 목록은 `assets/js/data.js`의 `slides`에서 그립니다(아래 '발표 자료 추가하기'). 지금은 'Vibe Learning'과 '한림대 영어영문학과 전공설명회'(날짜 없이 계속 고쳐 쓰는 자료라 날짜가 있는 자료 아래) 두 개입니다.
 - **DH Tutorials** (`tutorials.html`): [DH 튜토리얼](https://dhtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. 튜토리얼 목록은 그 사이트의 `assets/catalog.js`를 직접 불러와 그리므로, 새 튜토리얼을 올리면 이 페이지에도 자동으로 나타납니다. 불러오지 못하면 `assets/js/tutorials.js`에 적어 둔 목록(지금은 다섯 편)을 보여 줍니다. 방문자가 튜토리얼 사이트로 오도록 카드에는 '인터랙티브로 보기'만 두고, MP4 내려받기 링크는 넣지 않습니다(카탈로그의 `video` 항목은 쓰지 않음).
 - **English Tutorials** (`english.html`): [영어 튜토리얼](https://engtutorials.vercel.app/) 사이트로 이어지는 페이지입니다. DH Tutorials 페이지와 같은 방식으로 그 사이트의 `assets/catalog.js`를 직접 불러오고, 영역(`tracks`: 토익, 상황별 영어 회화)별로 묶어 보여 줍니다. 새 튜토리얼이나 새 영역이 올라오면 자동으로 나타나고, 불러오지 못하면 `assets/js/english.js`에 적어 둔 목록(지금은 스무 편)을 보여 줍니다. 새 영역의 영어 이름은 `english.js`의 `TRACK_EN`에 적습니다(없으면 한국어 이름).
+- **DAH 전공** (`dah.html`): [디지털인문예술전공 웹사이트](https://dah-hallym.vercel.app/)로 이어지는 페이지입니다. 오른쪽의 '전공과 함께한 기록'(주임교수, 2022년 주제 발표 두 편)은 `data.js`의 이력에서 옮겨 적은 것으로, 페이지에 직접 적혀 있습니다.
 
 빌드 과정이 없는 정적 사이트입니다(HTML · CSS · JavaScript, 외부 라이브러리 없음).
 
@@ -89,6 +90,7 @@ tutorials.html        DH Tutorials 페이지
 assets/js/tutorials.js  DH Tutorials 페이지의 목록
 english.html          English Tutorials 페이지
 assets/js/english.js  English Tutorials 페이지의 목록
+dah.html              DAH 전공(디지털인문예술전공) 링크 페이지
 assets/js/page.js     하위 페이지 공통(언어 전환, 별 배경, 진행 표시줄)
 assets/js/to-top.js   모든 페이지의 '맨 위로' 단추
 assets/img/           사진
