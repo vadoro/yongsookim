@@ -699,6 +699,18 @@ a.btn { text-decoration: none; }
 .dah-side > .label { display: block; margin-bottom: 0.6rem; }
 .dah-side .tf-k { flex: none; min-width: 3.2rem; }
 .dah-side li { line-height: 1.6; }
+/* 세 트랙은 한 줄에 셋, 좁으면 하나씩 (둘 + 하나로 갈라지지 않게) */
+.dah-tracks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+@media (min-width: 1024px) { .dah-tracks { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; } }
+.dah-track {
+  display: flex; flex-direction: column; gap: 0.75rem; min-width: 0;
+  background: var(--panel); border: 1px solid var(--line-2); border-radius: 16px;
+  box-shadow: inset 0 3px 0 var(--k); padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.dah-track .dt-n { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: 0.1em; color: var(--k); }
+.dah-track h3 { font-size: var(--fs-lg); font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.1em 0.5em; }
+.dah-track h3 em { font-family: var(--font-serif); font-weight: 400; font-size: 0.7em; letter-spacing: 0; color: var(--k); }
+.dah-track p:not(.dt-n) { color: var(--ink-2); line-height: 1.85; }
 
 /* ---------- slides page ---------- */
 .decks { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(2rem, 5vw, 3.5rem); }
@@ -845,6 +857,7 @@ a.btn { text-decoration: none; }
   .lec[hidden], .year-group[hidden] { display: grid !important; }
   .pub, .lec, .conf, .chrono-row, .award { break-inside: avoid; }
   .dc-title.is-grad { background: none; color: inherit; }
+  .dah-track { box-shadow: none; break-inside: avoid; }
   .year-label-inner { position: static; }
   .about-grid { display: block; }
   .chrono-bar.is-current, .kdot, .key-now { box-shadow: none; }
