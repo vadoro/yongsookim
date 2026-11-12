@@ -88,7 +88,7 @@ window.CV = {
     { start: "2018.07", end: "2020.06", ko: "한림대학교 일송자유교양대학장" },
     { start: "2021.08", end: "2023.06", ko: "한림대학교 일송기념도서관장" },
     { start: "2024.09", end: "",        ko: "한림대학교 디지털인문예술전공 주임교수" },
-    { start: "2026",    end: "",        ko: "한림대학교 영어영문학과장" }
+    { start: "2026.09", end: "",        ko: "한림대학교 영어영문학과장" }
   ],
 
   societies: [
@@ -312,7 +312,7 @@ window.CV = {
           { color: "#F2B544", name: { ko: "글로벌비즈니스영어", en: "Global Business English" }, tag: { ko: "영어 × 비즈니스", en: "English × Business" },
             note: { ko: "글로벌기업 · 마케팅 · 국제기구", en: "Global companies, marketing, international organisations" } },
           { color: "#FF7D66", name: { ko: "디지털영문콘텐츠", en: "Digital English Content" }, tag: { ko: "영어 × AI × 문학", en: "English × AI × Literature" },
-            note: { ko: "통번역가 · 콘텐츠·미디어 · 디지털마케팅", en: "Translation and interpreting, content and media, digital marketing" } },
+            note: { ko: "통번역가 · 콘텐츠 미디어 · 디지털마케팅", en: "Translation and interpreting, content and media, digital marketing" } },
           { color: "#3CC48A", name: { ko: "영미문학·인문교양", en: "Literature & Humanities" }, tag: { ko: "영어 × 인문학", en: "English × Humanities" },
             note: { ko: "공무원 · 외교 · 공공기관 · 교사", en: "Civil service, diplomacy, public institutions, teaching" } }
         ]
