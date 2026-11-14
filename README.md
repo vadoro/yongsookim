@@ -67,6 +67,10 @@
 
 Claude 아티팩트로 만든 슬라이드는 공유 설정을 **링크가 있는 누구나 볼 수 있게** 해 두어야 방문자가 열 수 있습니다.
 
+## 방문 통계
+
+구글 애널리틱스(GA4, 측정 ID `G-9W6JM2ECKR`)로 셉니다. 모든 페이지가 `<head>`에서 `assets/js/ga.js`를 불러오고, 이 파일은 사이트 주소(`yongsookim.vercel.app`)에서 연 페이지만 셉니다(내 컴퓨터 · localhost · Vercel 미리보기는 세지 않음). 도메인을 새로 붙이면 `ga.js`의 `HOSTS`에 더합니다. 새 페이지를 만들면 `<head>`에 `<script src="assets/js/ga.js"></script>`를 넣습니다. 같은 측정 ID를 DH 튜토리얼 · 영어 튜토리얼 사이트도 함께 쓰므로, 애널리틱스 보고서에서 '호스트 이름'으로 사이트를 나눠 봅니다.
+
 ## 로컬에서 보기
 
 ```bash
@@ -95,5 +99,6 @@ dell.html             영어영문학과 페이지
 dah.html              디지털인문예술전공 페이지
 assets/js/page.js     하위 페이지 공통(언어 전환, 별 배경, 진행 표시줄)
 assets/js/to-top.js   모든 페이지의 '맨 위로' 단추
+assets/js/ga.js       모든 페이지의 구글 애널리틱스(GA4) 방문 통계 (측정 ID G-9W6JM2ECKR)
 assets/img/           사진
 ```
